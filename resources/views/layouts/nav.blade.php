@@ -1,20 +1,20 @@
-        <div class="col-3 rounded-2" >
+        <div class="col-3 " >
             <div  class="list-group mt-3">
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
                   href="#list-item-1">
-                        Item 1 <span class="badge badge-primary badge-pill">14</span>
+                        အပိုင်း ( ၁ ) <span class="badge badge-primary badge-pill">14</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
                   href="#list-item-2">
-                        Item 2 <span class="badge badge-primary badge-pill">4</span>
+                        အပိုင်း ( ၂ ) <span class="badge badge-primary badge-pill">4</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
                   href="#list-item-3">
-                        Item 3 <span class="badge badge-primary badge-pill">3</span>
+                        အပိုင်း ( ၃ ) <span class="badge badge-primary badge-pill">3</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
                   href="#list-item-4">
-                        Item 4 <span class="badge badge-primary badge-pill">34</span>
+                        အပိုင်း ( ၄ ) <span class="badge badge-primary badge-pill">34</span>
                   </a>
             </div>
             <hr>

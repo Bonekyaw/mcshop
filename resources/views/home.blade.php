@@ -74,15 +74,7 @@
                 </div>       
             </div>
         </div>
-        <div class="col-1">
-            <button type="button" class="btn btn-success disabled">+ New</button>
-            <hr>  
-            <a href="" title="" class="text-success ">Category</a>
-            <a href="" title="" class="text-success ">Brand</a>
-            <a href="" title="" class="text-success ">Tag</a>
-            <a href="" title="" class="text-success ">Product</a>
-            <hr>
-        </div>      
+        @include('layouts.side')
     </div>
 </div>
 @endsection
