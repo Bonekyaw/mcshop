@@ -10,7 +10,7 @@
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="/brands">
-                        တံဆိပ်များ <span class="badge badge-primary badge-pill">4</span>
+                        တံဆိပ်များ <span class="badge badge-primary badge-pill">{{$brandCount ?? '' }}</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="#list-item-3">

@@ -24,6 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         $catCount = \App\Category::count();
-        return view('home', compact('catCount'));
+        $brandCount = \App\Brand::count();
+        return view('home', compact('catCount','brandCount'));
     }
 }

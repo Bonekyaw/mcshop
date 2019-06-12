@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Brand;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -16,7 +17,8 @@ class CategoryController extends Controller
     {
         $cats = Category::with('products')->orderBy('id','desc')->paginate(15);
         $catCount = Category::count();
-        return view('category.index', compact('cats','catCount'));
+        $brandCount = Brand::count();
+        return view('category.index', compact('cats','catCount','brandCount'));
     }
 
     /**
@@ -28,7 +30,8 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $catCount = Category::count();
-        return view('category.create', compact('category','catCount'));
+        $brandCount = Brand::count();
+        return view('category.create', compact('category','catCount','brandCount'));
     }
 
     /**
@@ -52,7 +55,8 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $catCount = Category::count();
-        return view('category.show', compact('category', 'catCount'));
+        $brandCount = Brand::count();
+        return view('category.show', compact('category', 'catCount','brandCount'));
     }
 
     /**
@@ -64,7 +68,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $catCount = Category::count();
-        return view('category.edit', compact('category', 'catCount'));
+        $brandCount = Brand::count();
+        return view('category.edit', compact('category', 'catCount','brandCount'));
     }
 
     /**
