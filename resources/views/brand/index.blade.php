@@ -7,6 +7,11 @@
         <div class="col-8 ">
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
+          @else
+            <p class="font-weight-bold h4 ">
+                Brand တံဆိပ်များ 
+            </p>
+            <hr>
           @endif
           <div class="row d-flex">
 

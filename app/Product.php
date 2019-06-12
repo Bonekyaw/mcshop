@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $guarded = [];
     public function category ()
     {
     	return $this->belongsTo(\App\Category::class);
@@ -13,6 +14,10 @@ class Product extends Model
     public function brand ()
     {
     	return $this->belongsTo(\App\Brand::class);
+    }
+    public function tags ()
+    {
+        return $this->belongsToMany(\App\Tag::class);
     }
     public function histories ()
     {

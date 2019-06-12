@@ -9,17 +9,17 @@
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @else
             <p class="font-weight-bold h4 ">
-                Category မျိုးကွဲများ 
+                Tag မျိုးတူရာတူရာ ပေါင်းစုခြင်း
             </p>
             <hr>
           @endif
           <div class="row d-flex">
 
-           @foreach ($cats as $category)
+           @foreach ($tags as $tag)
 
                 <div class="col-3 card bg-primary text-primary text-center p-4 m-3 " 
                 style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg'); background-size: cover;">
-                        <a href="/categories/{{$category->id}}" class=" font-weight-bold h5 " style="text-decoration: none;">{{$category->category}}</a>
+                        <a href="/tags/{{$tag->id}}" class=" font-weight-bold h5 " style="text-decoration: none;">{{$tag->tag}}</a>
                         <p class="font-weight-bold font-italic text-warning">25</p>
                 </div>       
 
@@ -27,7 +27,7 @@
 
           </div>
           <div class="mt-2">
-               {{$cats->links()}}
+               {{$tags->links()}}
           </div>
 
         </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Brand;
 use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -18,7 +19,8 @@ class BrandController extends Controller
         $brands = Brand::with('products')->orderBy('id','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
-        return view('brand.index', compact('brands','brandCount','catCount'));
+        $tagProducts = Tag::with('products')->get();
+        return view('brand.index', compact('brands','brandCount','catCount','tagProducts'));
     }
 
     /**
@@ -31,7 +33,8 @@ class BrandController extends Controller
         $brand = new Brand();
         $brandCount = Brand::count();
         $catCount = Category::count();
-        return view('brand.create', compact('brand','brandCount','catCount'));
+        $tagProducts = Tag::with('products')->get();
+        return view('brand.create', compact('brand','brandCount','catCount','tagProducts'));
     }
 
     /**
@@ -56,7 +59,8 @@ class BrandController extends Controller
     {
         $brandCount = Brand::count();
         $catCount = Category::count();
-        return view('brand.show', compact('brand', 'brandCount','catCount'));
+        $tagProducts = Tag::with('products')->get();
+        return view('brand.show', compact('brand', 'brandCount','catCount','tagProducts'));
     }
 
     /**
@@ -69,7 +73,8 @@ class BrandController extends Controller
     {
         $brandCount = Brand::count();
         $catCount = Category::count();
-        return view('brand.edit', compact('brand', 'brandCount','catCount'));
+        $tagProducts = Tag::with('products')->get();
+        return view('brand.edit', compact('brand', 'brandCount','catCount','tagProducts'));
     }
 
     /**

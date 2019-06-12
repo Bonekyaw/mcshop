@@ -1,9 +1,18 @@
         <div class="col-1 ">
-            <button type="button" class="btn btn-success disabled mt-3">+ New</button>
+            <button type="button" class="btn btn-dark text-white disabled mt-3">အသစ်ထည့်ရန်</button>
             <hr>  
-            <a href="/cats/create" title="ေခါင္းစဥ္အမည္အသစ္ေပးရန္" class="text-success ">Category</a>
-            <a href="/brands/create" title="တံဆိပ္အမည္အသစ္ေပးရန္" class="text-success ">Brand</a>
-            <a href="" title="သက္ဆိုင္ရာအမည္ေပးရန္" class="text-success ">Tag</a>
-            <a href="" title="ထုတ္ကုန္အမည္ေပးရန္" class="text-success ">Product</a>
-            <hr>
+            <div class="flex-column">
+                  <form action="/categories/create" method="get" class="mb-2 ">                    
+                    <button type="submit" class="btn btn-outline-success">Category</button>            
+                  </form>
+                  <form action="/products/create" method="get" class="mb-2">                    
+                    <button type="submit" class="btn btn-outline-info">Product </button>            
+                  </form>
+                  <form action="/brands/create" method="get" class="mb-2 ">                    
+                    <button type="submit" class="btn btn-outline-secondary ">Brand</button>            
+                  </form>
+                  <form action="/tags/create" method="get" class="mb-2">                    
+                    <button type="submit" class="btn btn-outline-primary">Tag </button>            
+                  </form>
+            </div>
         </div>      

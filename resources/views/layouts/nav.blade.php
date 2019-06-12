@@ -1,4 +1,9 @@
         <div class="col-3 " >
+            <form action="" method="get" >
+                  <div class="form-group">
+                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ">
+                  </div>
+            </form>
             <div  class="list-group mt-3">
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="/home">
@@ -13,8 +18,8 @@
                         တံဆိပ်များ <span class="badge badge-primary badge-pill">{{$brandCount ?? '' }}</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
-                  href="#list-item-3">
-                        ထုတ်ကုန်များ <span class="badge badge-primary badge-pill">3</span>
+                  href="/tags">
+                        ထုတ်ကုန်များ <span class="badge badge-primary badge-pill">{{$productCount ?? '' }}</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="#list-item-4">
@@ -29,21 +34,13 @@
             </div>
             <hr>
             <div class="my-2">
-                <button type="button" class="btn btn-outline-primary">Primary</button>
-                <button type="button" class="btn btn-outline-secondary">Secondary</button>
-                <button type="button" class="btn btn-outline-success">Success</button>
-                <button type="button" class="btn btn-outline-danger">Danger</button>
-                <button type="button" class="btn btn-outline-warning">Warning</button>
-                <button type="button" class="btn btn-outline-info">Info</button>
-                <button type="button" class="btn btn-outline-light">Light</button>
-                <button type="button" class="btn btn-outline-dark">Dark</button>            
-                <button type="button" class="btn btn-outline-primary">Primary</button>
-                <button type="button" class="btn btn-outline-secondary">Secondary</button>
-                <button type="button" class="btn btn-outline-success">Success</button>
-                <button type="button" class="btn btn-outline-danger">Danger</button>
-                <button type="button" class="btn btn-outline-warning">Warning</button>
-                <button type="button" class="btn btn-outline-info">Info</button>
-                <button type="button" class="btn btn-outline-light">Light</button>
-                <button type="button" class="btn btn-outline-dark">Dark</button>            
-              </div>        
+              <p class="font-weight-bold h5 pb-2">မျိုးတူရာ Tags အုပ်စု</p>
+              <div class="row d-flex ">
+                @foreach ($tagProducts as $tagProduct)
+                  <form action="/tags/{{$tagProduct->id}}" method="get" class="m-1">                    
+                    <button type="submit" class="btn btn-outline-success">{{$tagProduct->tag}}</button>            
+                  </form>
+                @endforeach
+              </div>
+            </div>        
         </div>
