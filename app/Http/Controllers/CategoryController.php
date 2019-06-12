@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Category::with('products')->orderBy('id','desc')->paginate(15);
+        $catCount = Category::count();
+        return view('category.index', compact('cats','catCount'));
     }
 
     /**
@@ -25,7 +27,8 @@ class CategoryController extends Controller
     public function create()
     {
         $category = new Category();
-        return view('category.create', compact('category'));
+        $catCount = Category::count();
+        return view('category.create', compact('category','catCount'));
     }
 
     /**
@@ -34,9 +37,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        Category::create($this->setValidate());
+        return redirect('categories')->with('success','Wow, သင် Category အမည်အသစ်တစ်ခု ထပ်ထည့်တာ အောင်မြင်ပါသည်');
     }
 
     /**
@@ -47,7 +51,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $catCount = Category::count();
+        return view('category.show', compact('category', 'catCount'));
     }
 
     /**
@@ -58,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $catCount = Category::count();
+        return view('category.edit', compact('category', 'catCount'));
     }
 
     /**
@@ -68,9 +74,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Category $category)
     {
-        //
+        $category->update($this->setValidate());
+        return redirect('categories')->with('success','Wow, သင် Category အမည်အသစ် ပြောင်းလဲတာ အောင်မြင်ပါသည်');
     }
 
     /**
@@ -81,6 +88,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('categories')->with('success','Category အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
+    }
+    public function setValidate()
+    {
+        return request()->validate([
+            'category' => ['required', 'string', 'max:255','unique:categories']
+        ]);
     }
 }

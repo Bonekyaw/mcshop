@@ -5,12 +5,13 @@
     <div class="row ">
         @include('layouts.nav')
         <div class="col-8 px-5 mt-3">
-            <form action="/categories" method="post" >
+            <form action="/categories/{{$category->id}}" method="post" >
+              @method('PATCH')
               @csrf
-              <h3><strong>Category အမည် အသစ်ထည့်ရန်</strong></h3>
+              <h3><strong>Category အမည် ပြန်ပြောင်းရန်</strong></h3>
               <hr>
               @include('category.form')
-              <button type="submit" class="btn btn-primary">ထည့်သွင်းမည်</button>
+              <button type="submit" class="btn btn-primary">ပြောင်းလဲမည်</button>
 
             </form>
         </div>

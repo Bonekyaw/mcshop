@@ -33,6 +33,36 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold " href="/categories">{{ __('မျိုးကွဲများ') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold " href="/brands">{{ __('တံဆိပ်များ') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold " href="/tags">{{ __('မျိုးတူရာတူရာ') }}</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{__('ထုတ်ကုန်များ') }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item font-weight-bold" href="#">
+                                        {{ __('ပစ္စည်းစုံ') }}
+                                    </a>
+                                    <a class="dropdown-item font-weight-bold" href="#">
+                                        {{ __('နောက်ဆုံးစာရင်းသွင်း') }}
+                                    </a>
+                                    <a class="dropdown-item font-weight-bold" href="#">
+                                        {{ __('ကုန်တော့မည့်စာရင်း') }}
+                                    </a>
+                                    <a class="dropdown-item font-weight-bold" href="#">
+                                        {{ __('ရောင်းပြီးစာရင်း') }}
+                                    </a>
+                                </div>
+                            </li>
+
 
                     </ul>
 

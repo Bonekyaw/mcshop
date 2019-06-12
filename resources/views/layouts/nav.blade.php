@@ -1,20 +1,30 @@
         <div class="col-3 " >
             <div  class="list-group mt-3">
-                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
-                  href="#list-item-1">
-                        အပိုင်း ( ၁ ) <span class="badge badge-primary badge-pill">14</span>
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
+                  href="/home">
+                        ပင်မစာမျက်နှာ 
                   </a>
-                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
-                  href="#list-item-2">
-                        အပိုင်း ( ၂ ) <span class="badge badge-primary badge-pill">4</span>
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
+                  href="/categories">
+                        မျိုးကွဲများ <span class="badge badge-primary badge-pill">{{$catCount ?? '' }}</span>
                   </a>
-                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
+                  href="/brands">
+                        တံဆိပ်များ <span class="badge badge-primary badge-pill">4</span>
+                  </a>
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="#list-item-3">
-                        အပိုင်း ( ၃ ) <span class="badge badge-primary badge-pill">3</span>
+                        ထုတ်ကုန်များ <span class="badge badge-primary badge-pill">3</span>
                   </a>
-                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" 
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="#list-item-4">
-                        အပိုင်း ( ၄ ) <span class="badge badge-primary badge-pill">34</span>
+                        နောက်ဆုံးစာရင်းသွင်း <span class="badge badge-primary badge-pill">34</span>
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
+                  href="#list-item-4">
+                        ရောင်းပြီးစာရင်း <span class="badge badge-primary badge-pill">34</span>
+                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
+                  href="#list-item-4">
+                        ကုန်တော့မည့်စာရင်း <span class="badge badge-primary badge-pill">34</span>
                   </a>
             </div>
             <hr>
