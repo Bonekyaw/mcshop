@@ -1,10 +1,10 @@
         <div class="col-3 " >
             <form action="" method="get" >
                   <div class="form-group">
-                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ">
+                    <input type="text" class="form-control shadow" aria-describedby="emailHelp" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ">
                   </div>
             </form>
-            <div  class="list-group mt-3">
+            <div  class="list-group shadow-sm mt-3">
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
                   href="/home">
                         ပင်မစာမျက်နှာ 
@@ -18,7 +18,7 @@
                         တံဆိပ်များ <span class="badge badge-primary badge-pill">{{$brandCount ?? '' }}</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
-                  href="/tags">
+                  href="/products">
                         ထုတ်ကုန်များ <span class="badge badge-primary badge-pill">{{$productCount ?? '' }}</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 

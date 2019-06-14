@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
             $table->float('price',8,2);
+            $table->float('cost',8,2);
             $table->float('discount',8,2)->nullable();
             $table->text('description')->nullable();
             $table->text('benefit')->nullable();

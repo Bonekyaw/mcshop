@@ -48,7 +48,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item font-weight-bold" href="#">
+                                    <a class="dropdown-item font-weight-bold" href="/products">
                                         {{ __('ပစ္စည်းစုံ') }}
                                     </a>
                                     <a class="dropdown-item font-weight-bold" href="#">

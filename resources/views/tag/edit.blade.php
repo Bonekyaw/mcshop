@@ -11,7 +11,7 @@
               <h3><strong>Tag အမည် ပြန်ပြောင်းရန်</strong></h3>
               <hr>
               @include('tag.form')
-              <button type="submit" class="btn btn-primary">ပြောင်းလဲမည်</button>
+              <button type="submit" class="btn btn-primary shadow">ပြောင်းလဲမည်</button>
 
             </form>
         </div>

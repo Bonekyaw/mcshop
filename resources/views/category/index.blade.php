@@ -17,10 +17,10 @@
 
            @foreach ($cats as $category)
 
-                <div class="col-3 card bg-primary text-primary text-center p-4 m-3 " 
-                style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg'); background-size: cover;">
+                <div class="col-3 card  text-white text-center p-4 m-3 " 
+                style="background-image: url({{ asset('storage/uploads/cat.jpg') }}); background-size: cover;border-radius: 15px;">
                         <a href="/categories/{{$category->id}}" class=" font-weight-bold h5 " style="text-decoration: none;">{{$category->category}}</a>
-                        <p class="font-weight-bold font-italic text-warning">25</p>
+                        <p class="font-weight-bold font-italic text-success h4">25</p>
                 </div>       
 
            @endforeach

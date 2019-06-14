@@ -1,5 +1,5 @@
   <div class="form-group">
-    <input type="text" class="form-control" id="brand" name="brand" 
+    <input type="text" class="form-control shadow-sm" id="brand" name="brand" 
     placeholder="ဒီနေရာမှာ စာရိုက်ပါ" value="{{ old('brand') ?? $brand->brand}}">
   </div>
   @if ($errors->first('brand'))

@@ -17,10 +17,10 @@
 
            @foreach ($brands as $brand)
 
-                <div class="col-3 card bg-primary text-primary text-center p-4 m-3 " 
-                style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg'); background-size: cover;">
+                <div class="col-3 card  text-white text-center p-4 m-3 " 
+                style="background-image: url({{ asset('storage/uploads/brand.jpg') }}); background-size: cover;border-radius: 15px;">
                         <a href="/brands/{{$brand->id}}" class=" font-weight-bold h5 " style="text-decoration: none;">{{$brand->brand}}</a>
-                        <p class="font-weight-bold font-italic text-warning">25</p>
+                        <p class="font-weight-bold font-italic text-white h4">25</p>
                 </div>       
 
            @endforeach

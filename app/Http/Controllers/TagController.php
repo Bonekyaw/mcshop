@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Tag;
 use App\Brand;
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +24,9 @@ class TagController extends Controller
         $tags = Tag::with('products')->orderBy('id','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.index', compact('tags','brandCount','catCount','tagProducts'));
+        return view('tag.index', compact('tags','brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -33,8 +39,9 @@ class TagController extends Controller
         $tag = new Tag();
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.create', compact('tag','brandCount','catCount','tagProducts'));
+        return view('tag.create', compact('tag','brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -59,8 +66,9 @@ class TagController extends Controller
     {
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.show', compact('tag', 'brandCount','catCount','tagProducts'));
+        return view('tag.show', compact('tag', 'brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -73,8 +81,9 @@ class TagController extends Controller
     {
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.edit', compact('tag', 'brandCount','catCount','tagProducts'));
+        return view('tag.edit', compact('tag', 'brandCount','catCount','tagProducts','productCount'));
     }
 
     /**

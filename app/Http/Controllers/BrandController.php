@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Tag;
+use App\Product;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Date;
 
 class BrandController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +26,9 @@ class BrandController extends Controller
         $brands = Brand::with('products')->orderBy('id','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('brand.index', compact('brands','brandCount','catCount','tagProducts'));
+        return view('brand.index', compact('brands','brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -30,11 +38,13 @@ class BrandController extends Controller
      */
     public function create()
     {
+        // $date = Date::parse('2019-06-13 16:55:00')->isoFormat('LLLL');
         $brand = new Brand();
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('brand.create', compact('brand','brandCount','catCount','tagProducts'));
+        return view('brand.create', compact('brand','brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -59,8 +69,9 @@ class BrandController extends Controller
     {
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('brand.show', compact('brand', 'brandCount','catCount','tagProducts'));
+        return view('brand.show', compact('brand', 'brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -73,8 +84,9 @@ class BrandController extends Controller
     {
         $brandCount = Brand::count();
         $catCount = Category::count();
+        $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('brand.edit', compact('brand', 'brandCount','catCount','tagProducts'));
+        return view('brand.edit', compact('brand', 'brandCount','catCount','tagProducts','productCount'));
     }
 
     /**
@@ -101,7 +113,7 @@ class BrandController extends Controller
         $brand->delete();
         return redirect('brands')->with('success','Brand အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
     }
-        public function setValidate()
+    public function setValidate()
     {
         return request()->validate([
             'brand' => ['required', 'string', 'max:255','unique:brands']

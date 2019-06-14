@@ -25,7 +25,8 @@ class HomeController extends Controller
     {
         $catCount = \App\Category::count();
         $brandCount = \App\Brand::count();
+        $productCount = \App\Product::count();
         $tagProducts = \App\Tag::with('products')->get();
-        return view('home', compact('catCount','brandCount','tagProducts'));
+        return view('home', compact('catCount','brandCount','tagProducts','productCount'));
     }
 }
