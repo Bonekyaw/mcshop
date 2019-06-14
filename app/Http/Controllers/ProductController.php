@@ -56,7 +56,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($this->setValidate());
+        $id = $request->id;
+        $product = Product::create($this->setValidate($id));
         $product->tags()->syncWithoutDetaching($request->tag_id);
         $this->storeToUploads($product);
         return redirect('products')->with('success','Wow, သင် Product အသစ်တစ်ခု ထပ်ထည့်တာ အောင်မြင်ပါသည်');
@@ -104,8 +105,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-
-        $product->update($this->setValidate());
+        $id = $product->id;
+        $product->update($this->setValidate($id));
         $product->tags()->syncWithoutDetaching($request->tag_id);
         $this->storeToUploads($product);
         return redirect('products')->with('success','Wow, သင် Product အမည်အသစ် ပြောင်းလဲတာ အောင်မြင်ပါသည်');
@@ -123,10 +124,10 @@ class ProductController extends Controller
         $product->tags()->detach();
         return redirect('products')->with('success','Product အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
     }
-    public function setValidate()
+    public function setValidate($id)
     {
          return request()->validate([
-            'product' => ['required','string','max:255','unique:products'],
+            'product' => "required|string|max:255|unique:products,product,$id",
             'brand_id' => 'required',
             'category_id' => 'required',
             'price' => 'required',
@@ -135,7 +136,7 @@ class ProductController extends Controller
             'description' => 'sometimes',
             'benefit' => 'sometimes',
             'weight' => 'sometimes',
-            'photo' => ['sometimes', 'file', 'image','max:5000'],
+            'photo' => 'sometimes|file|image|max:5000',
             'inStock' => 'required',
         ]);
 
