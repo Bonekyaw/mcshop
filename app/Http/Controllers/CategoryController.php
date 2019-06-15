@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::with('products')->orderBy('id','desc')->paginate(15);
+        $cats = Category::with('products')->orderBy('updated_at','desc')->paginate(30);
         $catCount = Category::count();
         $brandCount = Brand::count();
         $productCount = Product::count();

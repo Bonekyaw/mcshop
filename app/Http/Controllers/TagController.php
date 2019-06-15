@@ -21,7 +21,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::with('products')->orderBy('id','desc')->paginate(15);
+        $tags = Tag::with('products')->orderBy('updated_at','desc')->paginate(30);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

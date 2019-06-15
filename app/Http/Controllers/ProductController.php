@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with(['category','brand','tags'])->orderBy('id','desc')->paginate(9);
+        $products = Product::with(['category','brand','tags'])->orderBy('updated_at','desc')->paginate(16);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -147,7 +147,7 @@ class ProductController extends Controller
             $product->update([
                 'photo' => request()->photo->store('uploads','public')
             ]);
-            $photo = Image::make(public_path('storage/'.$product->photo))->fit(230,157);
+            $photo = Image::make(public_path('storage/'.$product->photo))->fit(180,120);
             $photo->save();
         }
     }

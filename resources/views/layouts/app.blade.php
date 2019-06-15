@@ -62,6 +62,26 @@
                                     </a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{__('အသစ်ထပ်ထည့်ခြင်း') }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item font-weight-bold" href="/categories/create">
+                                        {{ __('မျိုးကွဲသစ်') }}
+                                    </a>
+                                    <a class="dropdown-item font-weight-bold" href="/brands/create">
+                                        {{ __('တံဆိပ်သစ်') }}
+                                    </a>
+                                    <a class="dropdown-item font-weight-bold" href="/tags/create">
+                                        {{ __('မျိုးတူရာအစုသစ်') }}
+                                    </a>
+                                    <a class="dropdown-item font-weight-bold" href="/products/create">
+                                        {{ __('ထုတ်ကုန်သစ်') }}
+                                    </a>
+                                </div>
+                            </li>
 
 
                     </ul>

@@ -12,6 +12,7 @@
               <hr>
               @include('brand.form')
               <button type="submit" class="btn btn-primary shadow">ပြောင်းလဲမည်</button>
+              <a href="/brands" class="btn btn-danger shadow">မပြောင်းလဲတော့ပါ</a>
 
             </form>
         </div>

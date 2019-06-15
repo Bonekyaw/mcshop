@@ -23,7 +23,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::with('products')->orderBy('id','desc')->paginate(15);
+        $brands = Brand::with('products')->orderBy('updated_at','desc')->paginate(30);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
