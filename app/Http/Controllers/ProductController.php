@@ -8,6 +8,7 @@ use App\Category;
 use App\Tag;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -106,6 +107,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $id = $product->id;
+        Storage::delete('public/'.$product->photo);
         $product->update($this->setValidate($id));
         $product->tags()->syncWithoutDetaching($request->tag_id);
         $this->storeToUploads($product);
@@ -120,6 +122,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // if (file_exists(public_path('storage/'.$product->photo))) {
+        //     unlink(public_path('storage/'.$product->photo));
+        // }
+        Storage::delete('public/'.$product->photo);
         $product->delete();
         $product->tags()->detach();
         return redirect('products')->with('success','Product အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
