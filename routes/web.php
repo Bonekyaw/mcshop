@@ -25,3 +25,5 @@ Route::resources([
 		'tags' => 'TagController',
 		'products' => 'ProductController'
 ]);
+
+Route::post('/sold','ProductController@sold');

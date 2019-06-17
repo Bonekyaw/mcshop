@@ -21,12 +21,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::with('products')->orderBy('updated_at','desc')->paginate(30);
-        $catCount = Category::count();
+        $catPagi = Category::with('products')->orderBy('updated_at','desc')->paginate(30);
         $brandCount = Brand::count();
+        $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('category.index', compact('cats','catCount','brandCount','tagProducts','productCount'));
+        return view('category.index', compact('catPagi','catCount','brandCount','tagProducts','productCount'));
     }
 
     /**
@@ -37,8 +37,8 @@ class CategoryController extends Controller
     public function create()
     {
         $category = new Category();
-        $catCount = Category::count();
         $brandCount = Brand::count();
+        $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
         return view('category.create', compact('category','catCount','brandCount','tagProducts','productCount'));
@@ -64,11 +64,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $catCount = Category::count();
         $brandCount = Brand::count();
+        $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('category.show', compact('category', 'catCount','brandCount','tagProducts','productCount'));
+        return view('category.show', compact('category','catCount','brandCount','tagProducts','productCount'));
     }
 
     /**
@@ -79,11 +79,11 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $catCount = Category::count();
         $brandCount = Brand::count();
+        $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('category.edit', compact('category', 'catCount','brandCount','tagProducts','productCount'));
+        return view('category.edit', compact('category','catCount','brandCount','tagProducts','productCount'));
     }
 
     /**

@@ -24,7 +24,7 @@
     <label for="category">Category မျိုးကွဲတစ်ခုကို ရွေးချယ်ပါ</label>
     <select class="form-control shadow-sm" id="category" name="category_id" >
       <option value="">ဒီနေရာကိုနှိပ်ပြီး တခုခုကို ရွေးချယ်ပါ</option>
-      @foreach ($categories as $category)
+      @foreach ($cats as $category)
       	<option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected':''}}>{{ $category->category }}</option>      	
       @endforeach
     </select>

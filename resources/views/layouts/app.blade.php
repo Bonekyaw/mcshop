@@ -83,6 +83,12 @@
                                 </div>
                             </li>
 
+                            @if (isset ($bellNoti) )                           
+                                <li class="nav-item">
+                                     <a class="nav-link font-weight-bold text-primary" href="#"><i class="fas fa-bell"></i><sup class="text-danger">{{$bellNoti}}</sup></a>
+                                </li>
+                            @endif
+
 
                     </ul>
 

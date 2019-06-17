@@ -15,7 +15,7 @@
           @endif
           <div class="row d-flex">
 
-           @foreach ($cats as $category)
+           @foreach ($catPagi as $category)
                 <div class=" m-1 text-center d-flex flex-column justify-content-center" style="width: 10rem;border-radius: 20px; height: 100px; background: url({{ asset('storage/uploads/cat.jpg')  }});">
                    <a href="/categories/{{$category->id}}" class=" font-weight-bold text-white h4" 
                     style="border-radius: 18px;">{{$category->category}}</a>                              
@@ -26,7 +26,7 @@
 
           </div>
           <div class="mt-2">
-               {{$cats->links()}}
+               {{$catPagi->links()}}
           </div>
 
         </div>

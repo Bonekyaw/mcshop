@@ -10,13 +10,15 @@
           @endif
           <p class="font-weight-bold h4 mt-3">
             {{$brand->brand}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
-            <a href="/brands/{{$brand->id}}/edit" class="h6 text-danger bg-warning ">Brand အမည်ပြန်ပြောင်းလိုပါက</a>
+          </p>
+          <div class="row d-flex ">
+            <a href="/brands/{{$brand->id}}/edit" class="btn btn-outline-warning text-primary mr-3 "><i class="fas fa-redo"></i> &nbsp; Brand အမည်ပြန်ပြောင်းလိုပါကနှိပ်ရန်</a>
             <form action="/brands/{{$brand->id}}" method="post" >
               @method('DELETE')
               @csrf
               <!-- Button trigger modal -->
               <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
-                ပယ်ဖျက်လိုပါကနှိပ်ရန်
+                <i class="fas fa-times"></i> ပယ်ဖျက်လိုပါကနှိပ်ရန်
               </button>
 
               <!-- Modal -->
@@ -24,7 +26,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalCenterTitle">{{$brand->brand}} ကို ပယ်ဖျက်ခြင်း</h5>
+                      <h5 class="modal-title font-weight-bold" id="exampleModalCenterTitle">{{$brand->brand}} ကို ပယ်ဖျက်ခြင်း</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -33,15 +35,15 @@
                       သင် ဒီ {{$brand->brand}} ကို ပယ်ဖျက်မှာ သေချာပြီလား ?
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">မပယ်ဖျက်တော့ပါ</button>
-                      <button type="submit" class="btn btn-danger">သေချာပါသည်</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="far fa-thumbs-down"></i> မပယ်ဖျက်တော့ပါ</button>
+                      <button type="submit" class="btn btn-danger"><i class="far fa-thumbs-up"></i> သေချာပါသည်</button>
                     </div>
                   </div>
                 </div>
               </div>            
               
             </form>
-          </p>
+          </div>
           <hr>
 
           <div class="row d-flex">
@@ -56,10 +58,10 @@
               @endif
               @if ($product->inStock === 0)
                    <a href="/products/{{$product->id}}" class="btn btn-danger font-weight-bold text-warning h4" 
-                    style="border-radius: 12px;">{{$product->price}} Ks | Qt - {{$product->inStock}}</a>
+                    style="border-radius: 12px;">{{$product->price}} Ks  ( {{$product->inStock}} )</a>
               @else                              
                    <a href="/products/{{$product->id}}" class="btn btn-warning font-weight-bold text-danger h4" 
-                    style="border-radius: 12px;">{{$product->price}} Ks | Qt - {{$product->inStock}}</a>                              
+                    style="border-radius: 12px;">{{$product->price}} Ks  ( {{$product->inStock}} )</a>                              
               @endif
                   
                 </div>

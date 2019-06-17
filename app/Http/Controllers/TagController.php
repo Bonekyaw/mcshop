@@ -21,12 +21,12 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::with('products')->orderBy('updated_at','desc')->paginate(30);
+        $tagPagi = Tag::with('products')->orderBy('updated_at','desc')->paginate(30);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.index', compact('tags','brandCount','catCount','tagProducts','productCount'));
+        return view('tag.index', compact('tagPagi','catCount','brandCount','tagProducts','productCount'));
     }
 
     /**
@@ -41,7 +41,7 @@ class TagController extends Controller
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.create', compact('tag','brandCount','catCount','tagProducts','productCount'));
+        return view('tag.create', compact('tag','catCount','brandCount','tagProducts','productCount'));
     }
 
     /**
@@ -68,7 +68,7 @@ class TagController extends Controller
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.show', compact('tag', 'brandCount','catCount','tagProducts','productCount'));
+        return view('tag.show', compact('tag', 'catCount','brandCount','tagProducts','productCount'));
     }
 
     /**
@@ -83,7 +83,7 @@ class TagController extends Controller
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::with('products')->get();
-        return view('tag.edit', compact('tag', 'brandCount','catCount','tagProducts','productCount'));
+        return view('tag.edit', compact('tag', 'catCount','brandCount','tagProducts','productCount'));
     }
 
     /**

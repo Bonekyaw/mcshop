@@ -15,7 +15,7 @@
           @endif
           <div class="row d-flex">
 
-           @foreach ($tags as $tag)
+           @foreach ($tagPagi as $tag)
                 <div class=" m-1 text-center d-flex flex-column justify-content-center" style="width: 10rem;border-radius: 20px; height: 100px; background: url({{ asset('storage/uploads/tag.jpg')  }});">
                    <a href="/tags/{{$tag->id}}" class=" font-weight-bold text-white h4" 
                     style="border-radius: 18px;">{{$tag->tag}}</a>                              
@@ -26,7 +26,7 @@
 
           </div>
           <div class="mt-2">
-               {{$tags->links()}}
+               {{$tagPagi->links()}}
           </div>
 
         </div>

@@ -24,7 +24,7 @@
  --}}
           <div class="row d-flex">
 
-           @foreach ($products as $product)
+           @foreach ($productPagi as $product)
 
             <div class=" mb-3 ml-2 mr-3 d-flex flex-column  text-center">
               @if ($product->photo)
@@ -34,15 +34,15 @@
               @endif
               @if ($product->inStock === 0)
                    <a href="/products/{{$product->id}}" class="btn btn-danger font-weight-bold text-warning h4" 
-                    style="border-radius: 12px;">{{$product->price}} Ks | Qt - {{$product->inStock}}</a>
+                    style="border-radius: 12px;">{{$product->price}} Ks   ( {{$product->inStock}} )</a>
               @else                              
                    <a href="/products/{{$product->id}}" class="btn btn-warning font-weight-bold text-danger h4" 
-                    style="border-radius: 12px;">{{$product->price}} Ks | Qt - {{$product->inStock}}</a>                              
+                    style="border-radius: 12px;">{{$product->price}} Ks   ( {{$product->inStock}} )</a>                              
               @endif
                   
                 </div>
                 <a href="/products/{{$product->id}}" class=" btn btn-outline-primary font-weight-bold h3 mx-3 " style="border-radius: 12px;">
-                   {{mb_substr($product->product, 0,11)}}
+                   {{mb_substr($product->product, 0,16)}}
                 </a>
             </div>
 
@@ -50,7 +50,7 @@
 
         </div>
           <div class="mt-2">
-               {{$products->links()}}
+               {{$productPagi->links()}}
           </div>
 
         </div>

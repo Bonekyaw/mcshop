@@ -12,7 +12,7 @@
               <hr>
               @include('tag.form')
               <button type="submit" class="btn btn-primary shadow">ပြောင်းလဲမည်</button>
-              <a href="/tags"  class="btn btn-danger shadow">မပြောင်းလဲတော့ပါ</a>
+              <a href="/tags"  class="btn btn-danger shadow"><i class="fas fa-times"></i> မပြောင်းလဲတော့ပါ</a>
 
             </form>
         </div>

@@ -23,10 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $catCount = \App\Category::count();
-        $brandCount = \App\Brand::count();
-        $productCount = \App\Product::count();
+        $cats = \App\Category::with('products')->get();
+        $brands = \App\Brand::with('products')->get();
+        $bellNoti = \App\Product::where('inStock','<',4)->count();
+        $products = \App\Product::all();
         $tagProducts = \App\Tag::with('products')->get();
-        return view('home', compact('catCount','brandCount','tagProducts','productCount'));
+        return view('home', compact('cats','brands','tagProducts','products','bellNoti'));
     }
 }

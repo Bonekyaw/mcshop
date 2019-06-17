@@ -11,8 +11,8 @@
               <h3><strong>Brand အမည် ပြန်ပြောင်းရန်</strong></h3>
               <hr>
               @include('brand.form')
-              <button type="submit" class="btn btn-primary shadow">ပြောင်းလဲမည်</button>
-              <a href="/brands" class="btn btn-danger shadow">မပြောင်းလဲတော့ပါ</a>
+              <button type="submit" class="btn btn-primary shadow"><i class="fas fa-check"></i> ပြောင်းလဲမည်</button>
+              <a href="/brands" class="btn btn-danger shadow"><i class="fas fa-times"></i> မပြောင်းလဲတော့ပါ</a>
 
             </form>
         </div>

@@ -23,12 +23,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with(['category','brand','tags'])->orderBy('updated_at','desc')->paginate(16);
-        $brandCount = Brand::count();
-        $catCount = Category::count();
-        $productCount = Product::count();
+        $productPagi = Product::with(['category','brand','tags'])->orderBy('updated_at','desc')->paginate(16);
+        $brands = Brand::all();
+        $cats = Category::all();
+        $products = Product::all();
+        $bellNoti = Product::where('inStock','<',4)->count();
         $tagProducts = Tag::with('products')->get();
-        return view('product.index', compact('products','brandCount','catCount','tagProducts','productCount'));
+        return view('product.index', compact('productPagi','brands','cats','tagProducts','products','bellNoti'));
     }
 
     /**
@@ -39,14 +40,12 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        $brandCount = Brand::count();
-        $catCount = Category::count();
-        $productCount = Product::count();
         $brands = Brand::all();
-        $categories = Category::all();
+        $cats = Category::all();
+        $products = Product::all();
         $tags = Tag::all();
         $tagProducts = Tag::with('products')->get();
-        return view('product.create', compact('product','brandCount','catCount','tagProducts','productCount','brands','categories','tags'));
+        return view('product.create', compact('product','brands','cats','tagProducts','products','tags'));
     }
 
     /**
@@ -72,11 +71,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $brandCount = Brand::count();
-        $catCount = Category::count();
-        $productCount = Product::count();
+        $brands = Brand::all();
+        $cats = Category::all();
+        $products = Product::all();
         $tagProducts = Tag::with('products')->get();
-        return view('product.show', compact('product', 'brandCount','catCount','tagProducts','productCount'));
+        return view('product.show', compact('product', 'brands','cats','tagProducts','products'));
     }
 
     /**
@@ -87,14 +86,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $brandCount = Brand::count();
-        $catCount = Category::count();
-        $productCount = Product::count();
-        $tagProducts = Tag::with('products')->get();
         $brands = Brand::all();
-        $categories = Category::all();
+        $cats = Category::all();
+        $products = Product::all();
+        $tagProducts = Tag::with('products')->get();
         $tags = Tag::all();
-        return view('product.edit', compact('product', 'brandCount','catCount','tagProducts','productCount','brands','categories','tags'));
+        return view('product.edit', compact('product', 'brands','cats','tagProducts','products','tags'));
     }
 
     /**
@@ -107,7 +104,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $id = $product->id;
-        Storage::delete('public/'.$product->photo);
+        if (request()->has('photo')) {
+            Storage::delete('public/'.$product->photo);
+        }
         $product->update($this->setValidate($id));
         $product->tags()->syncWithoutDetaching($request->tag_id);
         $this->storeToUploads($product);
@@ -156,5 +155,16 @@ class ProductController extends Controller
             $photo = Image::make(public_path('storage/'.$product->photo))->fit(180,120);
             $photo->save();
         }
+    }
+
+    public function sold ()
+    {
+            $product = Product::findOrFail(request()->id);
+        if (request()->sold > 0 && $product->inStock > 0) {
+            $product->update([
+                'inStock' => $product->inStock - request()->sold
+            ]) ;
+        }
+        return back();
     }
 }

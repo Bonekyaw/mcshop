@@ -11,8 +11,8 @@
               <h3><strong>Category အမည် ပြန်ပြောင်းရန်</strong></h3>
               <hr>
               @include('category.form')
-              <button type="submit" class="btn btn-primary shadow">ပြောင်းလဲမည်</button>
-              <a href="/categories"  class="btn btn-danger shadow">မပြောင်းလဲတော့ပါ</a>
+              <button type="submit" class="btn btn-primary shadow"><i class="fas fa-check"></i> ပြောင်းလဲမည်</button>
+              <a href="/categories"  class="btn btn-danger shadow"><i class="fas fa-times"></i> မပြောင်းလဲတော့ပါ</a>
 
             </form>
         </div>
