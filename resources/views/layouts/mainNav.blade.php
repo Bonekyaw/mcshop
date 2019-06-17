@@ -34,7 +34,7 @@
 		                        နောက်ဆုံးစာရင်းသွင်း <span class="badge badge-primary badge-pill">34</span>
 		                  <a class="dropdown-item" 
 		                  href="#list-item-4">
-		                        ရောင်းပြီးစာရင်း <span class="badge badge-primary badge-pill">34</span>
+		                        ရောင်းပြီးစာရင်း <span class="badge badge-primary badge-pill">{{$histories->count() ?? ''}}</span>
 		                  <a class="dropdown-item" 
 		                  href="#list-item-4">
 		                        ကုန်တော့မည့်စာရင်း <span class="badge badge-primary badge-pill">34</span>

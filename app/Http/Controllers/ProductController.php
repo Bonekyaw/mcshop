@@ -6,9 +6,11 @@ use App\Product;
 use App\Brand;
 use App\Category;
 use App\Tag;
+use App\History;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Storage;
+use App\Events\HistoryEvent;
 
 class ProductController extends Controller
 {
@@ -161,9 +163,11 @@ class ProductController extends Controller
     {
             $product = Product::findOrFail(request()->id);
         if (request()->sold > 0 && $product->inStock > 0) {
+            $quantity =   request()->sold;          
             $product->update([
                 'inStock' => $product->inStock - request()->sold
             ]) ;
+            event(new HistoryEvent($product, $quantity));
         }
         return back();
     }

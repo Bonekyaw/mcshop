@@ -28,6 +28,7 @@ class HomeController extends Controller
         $bellNoti = \App\Product::where('inStock','<',4)->count();
         $products = \App\Product::all();
         $tagProducts = \App\Tag::with('products')->get();
-        return view('home', compact('cats','brands','tagProducts','products','bellNoti'));
+        $histories = \App\History::all();
+        return view('home', compact('cats','brands','tagProducts','products','bellNoti','histories'));
     }
 }
