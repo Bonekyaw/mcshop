@@ -6,6 +6,7 @@ use App\Category;
 use App\Brand;
 use App\Tag;
 use App\Product;
+use App\History;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -25,8 +26,10 @@ class CategoryController extends Controller
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
-        $tagProducts = Tag::with('products')->get();
-        return view('category.index', compact('catPagi','catCount','brandCount','tagProducts','productCount'));
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('category.index', compact('catPagi','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
     }
 
     /**
@@ -40,8 +43,10 @@ class CategoryController extends Controller
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
-        $tagProducts = Tag::with('products')->get();
-        return view('category.create', compact('category','catCount','brandCount','tagProducts','productCount'));
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('category.create', compact('category','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
     }
 
     /**
@@ -67,8 +72,10 @@ class CategoryController extends Controller
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
-        $tagProducts = Tag::with('products')->get();
-        return view('category.show', compact('category','catCount','brandCount','tagProducts','productCount'));
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('category.show', compact('category','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
     }
 
     /**
@@ -82,8 +89,10 @@ class CategoryController extends Controller
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
-        $tagProducts = Tag::with('products')->get();
-        return view('category.edit', compact('category','catCount','brandCount','tagProducts','productCount'));
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('category.edit', compact('category','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
     }
 
     /**
@@ -116,4 +125,5 @@ class CategoryController extends Controller
             'category' => ['required', 'string', 'max:255','unique:categories']
         ]);
     }
+
 }

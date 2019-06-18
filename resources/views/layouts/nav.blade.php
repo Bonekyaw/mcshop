@@ -1,10 +1,10 @@
         <div class="col-3 " >
-            <form action="" method="get" >
+{{--             <form action="" method="get" >
                   <div class="form-group">
                     <input type="text" class="form-control shadow" aria-describedby="emailHelp" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ">
                   </div>
             </form>
-            <div  class="list-group shadow-sm mt-3">
+ --}}            <div  class="list-group shadow-sm mt-1">
                   <a class="list-group-item list-group-item-action  align-items-center font-weight-bold" 
                   href="/home">
                         <i class="fas fa-home"></i>  &nbsp; ပင်မစာမျက်နှာ 
@@ -22,14 +22,12 @@
                        <span><i class="fas fa-database"></i> &nbsp; ထုတ်ကုန်များ</span>  <span class="badge badge-primary badge-pill">{{$productCount ?? '' }}</span>
                   </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
-                  href="#list-item-4">
-                        နောက်ဆုံးစာရင်းသွင်း <span class="badge badge-primary badge-pill">34</span>
+                  href="/histories">
+                        ရောင်းပြီးစာရင်း <span class="badge badge-primary badge-pill">{{$historyCount ?? ''}}</span>
+                  </a>
                   <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
-                  href="#list-item-4">
-                        ရောင်းပြီးစာရင်း <span class="badge badge-primary badge-pill">34</span>
-                  <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center font-weight-bold" 
-                  href="#list-item-4">
-                        ကုန်တော့မည့်စာရင်း <span class="badge badge-primary badge-pill">34</span>
+                  href="/histories/outOfStock">
+                        ကုန်တော့မည့်စာရင်း <span class="badge badge-primary badge-pill">{{$bellNoti}}</span>
                   </a>
             </div>
             <hr>

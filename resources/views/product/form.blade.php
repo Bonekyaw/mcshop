@@ -36,7 +36,7 @@
   <div class="form-group">
     <label for="tag">Tag မျိုးတူရာတူရာကို တခုထက်မက ရွေးချယ်နိုင်သည်</label>
     <select multiple class="form-control shadow-sm" id="tag" name="tag_id[]" >
-      @foreach ($tags as $tag)
+      @foreach ($tagProducts as $tag)
       	<option value="{{ $tag->id }}" >
       		{{ $tag->tag }}
       	</option>      	

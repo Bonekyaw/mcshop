@@ -32,7 +32,7 @@
               @else
                 <div  style="width: 11rem;margin: 5px;padding-top: 65px;border-radius: 20px; height: 110px; background: url({{ asset('storage/uploads/pro.jpg')  }});">
               @endif
-              @if ($product->inStock === 0)
+              @if ($product->inStock === 0 )
                    <a href="/products/{{$product->id}}" class="btn btn-danger font-weight-bold text-warning h4" 
                     style="border-radius: 12px;">{{$product->price}} Ks   ( {{$product->inStock}} )</a>
               @else                              

@@ -17,9 +17,9 @@
 
            @foreach ($catPagi as $category)
                 <div class=" m-1 text-center d-flex flex-column justify-content-center" style="width: 10rem;border-radius: 20px; height: 100px; background: url({{ asset('storage/uploads/cat.jpg')  }});">
-                   <a href="/categories/{{$category->id}}" class=" font-weight-bold text-white h4" 
+                   <a href="/categories/{{$category->id}}" class=" font-weight-bold text-white h4 text-decoration-none" 
                     style="border-radius: 18px;">{{$category->category}}</a>                              
-                  <a href="/categories/{{$category->id}}" class="text-warning font-weight-bold">{{$category->products()->count()}}</a>
+                  <a href="/categories/{{$category->id}}" class="text-warning font-weight-bold text-decoration-none">{{$category->products()->count()}}</a>
                 </div>
 
            @endforeach

@@ -30,14 +30,12 @@
 		                       <span><i class="fas fa-database"></i> &nbsp; ထုတ်ကုန်များ</span>  <span class="badge badge-primary badge-pill">{{$products->count() ?? '' }}</span>
 		                  </a>
 		                  <a class="dropdown-item" 
-		                  href="#list-item-4">
-		                        နောက်ဆုံးစာရင်းသွင်း <span class="badge badge-primary badge-pill">34</span>
-		                  <a class="dropdown-item" 
-		                  href="#list-item-4">
+		                  href="/histories">
 		                        ရောင်းပြီးစာရင်း <span class="badge badge-primary badge-pill">{{$histories->count() ?? ''}}</span>
+		                  </a>
 		                  <a class="dropdown-item" 
-		                  href="#list-item-4">
-		                        ကုန်တော့မည့်စာရင်း <span class="badge badge-primary badge-pill">34</span>
+		                  href="/histories/outOfStock">
+		                        ကုန်တော့မည့်စာရင်း <span class="badge badge-primary badge-pill">{{$bellNoti}}</span>
 		                  </a>
 					    </div>
 					  </div>

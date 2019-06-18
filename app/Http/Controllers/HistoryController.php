@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\Category;
+use App\Tag;
+use App\Product;
 use App\History;
 use Illuminate\Http\Request;
 
@@ -18,72 +22,49 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        $historyPagi = History::with('product:id,product')->orderBy('updated_at','desc')->limit(60)->paginate(15);
+        $brandCount = Brand::count();
+        $catCount = Category::count();
+        $productCount = Product::count();
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('history.index', compact('historyPagi','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+    }
+    public function getByDate()
+    {
+        $date = request()->day;
+        $month = request()->month;
+        $year = request()->year;
+        $historyPagi = History::whereDay('created_at', '=', $date )->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->paginate(15);
+        $brandCount = Brand::count();
+        $catCount = Category::count();
+        $productCount = Product::count();
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('history.sort', compact('historyPagi','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+
+    }
+    public function deleteByMonth()
+    {
+        $month = request()->month;
+        $year = request()->year;
+        History::whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->delete();
+        return redirect('histories');
+
+    }
+    public function getByOutStock()
+    {
+        $outStockPagi = Product::where('inStock','<',4)->orderBy('updated_at','desc')->paginate(15);
+        $brandCount = Brand::count();
+        $catCount = Category::count();
+        $productCount = Product::count();
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('history.stock', compact('outStockPagi','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\History  $history
-     * @return \Illuminate\Http\Response
-     */
-    public function show(History $history)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\History  $history
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(History $history)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\History  $history
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, History $history)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\History  $history
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(History $history)
-    {
-        //
-    }
 }

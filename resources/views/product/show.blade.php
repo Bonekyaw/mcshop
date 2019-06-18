@@ -54,7 +54,7 @@
               @else
                 <img src="{{ asset('storage/uploads/pro.jpg') }}" alt="..." style="border-radius: 20px;">
               @endif
-              @if ($product->inStock < 5 && $product->inStock != 0)
+              @if ($product->inStock < 4 && $product->inStock != 0)
                 <div class="alert alert-warning text-center mt-2 shadow-lg">သင့်ပစ္စည်းလက်ကျန် အရမ်းနည်းနေပါသည်</div>
               @elseif ($product->inStock === 0)
                 <div class="alert alert-danger text-center mt-2 shadow-lg">ပစ္စည်းလက်ကျန် လုံးဝ မရှိတော့ပါ</div>

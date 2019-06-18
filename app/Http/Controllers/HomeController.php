@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,10 @@ class HomeController extends Controller
         $brands = \App\Brand::with('products')->get();
         $bellNoti = \App\Product::where('inStock','<',4)->count();
         $products = \App\Product::all();
-        $tagProducts = \App\Tag::with('products')->get();
+        $tagProducts = \App\Tag::all();
         $histories = \App\History::all();
-        return view('home', compact('cats','brands','tagProducts','products','bellNoti','histories'));
+        $today = (\App\History::wheredate('created_at', '=', Carbon::now())->count()/100)*100;
+        $yesterday = (\App\History::wheredate('created_at', '=', Carbon::yesterday())->count()/100)*100;
+        return view('home', compact('cats','brands','tagProducts','products','bellNoti','histories','today','yesterday'));
     }
 }

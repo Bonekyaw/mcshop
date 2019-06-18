@@ -51,13 +51,10 @@
                                     <a class="dropdown-item font-weight-bold" href="/products">
                                         {{ __('ပစ္စည်းစုံ') }}
                                     </a>
-                                    <a class="dropdown-item font-weight-bold" href="#">
-                                        {{ __('နောက်ဆုံးစာရင်းသွင်း') }}
-                                    </a>
-                                    <a class="dropdown-item font-weight-bold" href="#">
+                                    <a class="dropdown-item font-weight-bold" href="/histories/outOfStock">
                                         {{ __('ကုန်တော့မည့်စာရင်း') }}
                                     </a>
-                                    <a class="dropdown-item font-weight-bold" href="#">
+                                    <a class="dropdown-item font-weight-bold" href="/histories">
                                         {{ __('ရောင်းပြီးစာရင်း') }}
                                     </a>
                                 </div>
@@ -85,7 +82,7 @@
 
                             @if (isset ($bellNoti) )                           
                                 <li class="nav-item">
-                                     <a class="nav-link font-weight-bold text-primary" href="#"><i class="fas fa-bell"></i><sup class="text-danger">{{$bellNoti}}</sup></a>
+                                     <a class="nav-link font-weight-bold text-primary" href="/histories/outOfStock"><i class="fas fa-bell"></i><sup class="text-danger">{{$bellNoti}}</sup></a>
                                 </li>
                             @endif
 

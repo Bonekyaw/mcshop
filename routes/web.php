@@ -23,7 +23,11 @@ Route::resources([
 		'categories'	=> 'CategoryController',
 		'brands' => 'BrandController',
 		'tags' => 'TagController',
-		'products' => 'ProductController'
+		'products' => 'ProductController',
 ]);
 
 Route::post('/sold','ProductController@sold');
+Route::get('/histories','HistoryController@index');
+Route::post('/histories','HistoryController@getByDate');
+Route::post('/histories/delete','HistoryController@deleteByMonth');
+Route::get('/histories/outOfStock','HistoryController@getByOutStock');
