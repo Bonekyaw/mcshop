@@ -32,10 +32,102 @@
 					  	{{$rand}} %
 					  </div>
 				</div>
+				<hr>
+
+				<div class="my-4">
+	               <p class="font-weight-bold h5 pb-2 text-secondary"> <i class="fas fa-tags"></i> မျိုးတူရာ Tags အုပ်စု</p>
+	              <div class="row d-flex ">
+	                @foreach ($tagProducts as $tagProduct)
+	                  <form action="/tags/{{$tagProduct->id}}" method="get" class="m-1">                    
+	                    <button type="submit" class="btn btn-outline-success">{{$tagProduct->tag}}</button>            
+	                  </form>
+	                @endforeach
+	              </div>
+            	</div>        
+
             </div>
-            <div class="col-8">
-            	<p>Hi Hi Hi</p>
+
+            <div class="col-6">
+            <p class="font-weight-bold h4 my-2 text-secondary">
+                သင်ရှာဖွေထားသော ကုန်ပစ္စည်းများ စာရင်း
+            </p>
+            <br>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">ထုတ်ကုန်အမည်</th>
+                      <th scope="col">ဈေးနှုန်း</th>
+                      <th scope="col">လက်ကျန်</th>
+                      <th scope="col">ရောင်းရခုရေ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+            @php
+                $i = 0;
+            @endphp          
+                    @foreach ($products as $product)
+                    <tr>
+                      <th scope="row">
+                        @php
+                        echo ++$i ;
+                        @endphp
+                      </th>
+                      <td>
+                        <a href="/products/{{$product->id}}" class="text-decoration-none">{{$product->product}}</a>                        
+                      </td>
+                      <td>{{$product->price}}</td>
+                      <td>{{$product->inStock}}</td>
+                      <td >
+              <form action="/sold" method="post" >
+                @csrf
+                    <input type="hidden" name="id" value="{{$product->id}}"> 
+                    <div class="input-group ">
+                      <input type="number" class="form-control shadow-sm" name="sold" id="sold" placeholder="eg. 5" aria-label="Text input with segmented dropdown button" 
+                      value="1">
+				      <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i></button>              
+                    </div>
+			  </form>
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>           
             </div>
+
+            <div class="col-3">
+				<ul class="list-group list-group-flush shadow-sm mb-3 ">
+				  <li class="list-group-item font-weight-bold text-primary">
+				  	<div class="spinner-grow spinner-grow-sm text-primary" role="status">
+					  <span class="sr-only">Loading...</span>
+					</div> 
+					ယနေ့ အရောင်းစာရင်း
+				  </li>
+				  @for ($i = 0; $i < 8 ; $i++)
+					  <li class="list-group-item">
+					  		<div class="d-flex w-100 justify-content-between">
+				      			<a href="/products/{{$histories[$i]->product->id}}" class="mb-1">{{$histories[$i]->product->product}}</a>
+				      			<small >{{$histories[$i]->created_at->diffForHumans()}}</small>
+				    		</div>
+				    		<small class="mb-1 ">{{$histories[$i]->quantity}} ခု ရောင်းရပါသည်</small>
+					  </li>
+				  @endfor
+				</ul>
+		        <form action="/histories" method="post">
+		             	@csrf
+		                  	
+					  <div class="form-group">
+					    <input type="hidden" name="day" value="{{ now()->isoFormat('D')}}">
+					    <input type="hidden" name="month" value="{{ now()->isoFormat('M')}}">
+					    <input type="hidden" name="year" value="{{ now()->isoFormat('YYYY')}}">
+					    <button type="submit" class="btn btn-light">
+					    	<i class="fas fa-arrow-circle-right" ></i> &nbsp; ဆက်ကြည့်လိုပါကနှိပ်ရန် &nbsp;
+					    	<span class="badge badge-primary badge-pill">{{$histories->count() ?? ''}}</span>
+					    </button>
+					  </div>
+		        </form>
+
+			</div>
     </div>
 </div>
 @endsection

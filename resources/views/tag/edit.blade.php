@@ -8,7 +8,7 @@
             <form action="/tags/{{$tag->id}}" method="post" >
               @method('PATCH')
               @csrf
-              <h3><strong>Tag အမည် ပြန်ပြောင်းရန်</strong></h3>
+              <h3 class="text-secondary font-weight-bold">Tag အမည် ပြန်ပြောင်းရန်</h3>
               <hr>
               @include('tag.form')
               <button type="submit" class="btn btn-primary shadow">ပြောင်းလဲမည်</button>

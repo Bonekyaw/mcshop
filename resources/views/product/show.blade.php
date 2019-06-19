@@ -8,7 +8,7 @@
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @endif
-          <p class="font-weight-bold h4 mt-3">
+          <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$product->product}}  အကြောင်းအသေးစိတ်
           </p>
           <div class="row d-flex ">

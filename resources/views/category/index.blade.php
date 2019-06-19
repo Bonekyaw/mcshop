@@ -8,7 +8,7 @@
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @else
-            <p class="font-weight-bold h4 ">
+            <p class="font-weight-bold h4 text-secondary">
                 Category မျိုးကွဲများ 
             </p>
             <hr>

@@ -8,7 +8,7 @@
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @endif
-          <p class="font-weight-bold h4 mt-3">
+          <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$tag->tag}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
           </p>
           <div class="row d-flex ">

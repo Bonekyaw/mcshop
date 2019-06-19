@@ -7,7 +7,7 @@
         <div class="col-8 px-5 mt-3">
             <form action="/products" method="post" enctype="multipart/form-data">
               @csrf
-              <h3><strong>Product အမည် အသစ်ထည့်ရန်</strong></h3>
+              <h3 class="text-secondary font-weight-bold">Product အမည် အသစ်ထည့်ရန်</h3>
               <hr>
               @include('product.form')
               <button type="submit" class="btn btn-primary shadow"><i class="fas fa-plus"></i> ထည့်သွင်းမည်</button>

@@ -9,7 +9,7 @@
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @else
           <div class="row d-flex">
-            <p class="font-weight-bold h4 mr-5">
+            <p class="font-weight-bold h4 mr-5 text-secondary">
                 ရက်အလိုက် ရောင်းပြီး ကုန်ပစ္စည်းများ စာရင်း
             </p>
               <form action="/histories" method="post" class="row d-flex">

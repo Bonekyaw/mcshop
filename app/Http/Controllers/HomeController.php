@@ -29,8 +29,8 @@ class HomeController extends Controller
         $bellNoti = \App\Product::where('inStock','<',4)->count();
         $products = \App\Product::all();
         $tagProducts = \App\Tag::all();
-        $histories = \App\History::all();
-        $today = (\App\History::wheredate('created_at', '=', Carbon::now())->count()/100)*100;
+        $histories = \App\History::with('product:id,product')->wheredate('created_at', '=', now())->orderBy('created_at','desc')->get();
+        $today = (\App\History::wheredate('created_at', '=', now())->count()/100)*100;
         $yesterday = (\App\History::wheredate('created_at', '=', Carbon::yesterday())->count()/100)*100;
         return view('home', compact('cats','brands','tagProducts','products','bellNoti','histories','today','yesterday'));
     }

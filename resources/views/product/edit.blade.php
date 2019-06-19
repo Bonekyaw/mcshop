@@ -8,7 +8,7 @@
             <form action="/products/{{$product->id}}" method="post" enctype="multipart/form-data">
               @method('PATCH')
               @csrf
-              <h3><strong>Product အမည် ပြန်ပြောင်းရန်</strong></h3>
+              <h3 class="text-secondary font-weight-bold">Product အမည် ပြန်ပြောင်းရန်</h3>
               <hr>
               @include('product.form')
               <button type="submit" class="btn btn-primary shadow"><i class="fas fa-check"></i> ပြောင်းလဲမည်</button>

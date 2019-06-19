@@ -8,7 +8,7 @@
             <form action="/categories/{{$category->id}}" method="post" >
               @method('PATCH')
               @csrf
-              <h3><strong>Category အမည် ပြန်ပြောင်းရန်</strong></h3>
+              <h3 class="text-secondary font-weight-bold">Category အမည် ပြန်ပြောင်းရန်</h3>
               <hr>
               @include('category.form')
               <button type="submit" class="btn btn-primary shadow"><i class="fas fa-check"></i> ပြောင်းလဲမည်</button>

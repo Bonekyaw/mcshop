@@ -8,7 +8,7 @@
             <form action="/brands/{{$brand->id}}" method="post" >
               @method('PATCH')
               @csrf
-              <h3><strong>Brand အမည် ပြန်ပြောင်းရန်</strong></h3>
+              <h3 class="text-secondary font-weight-bold">Brand အမည် ပြန်ပြောင်းရန်</h3>
               <hr>
               @include('brand.form')
               <button type="submit" class="btn btn-primary shadow"><i class="fas fa-check"></i> ပြောင်းလဲမည်</button>

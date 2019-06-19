@@ -32,7 +32,7 @@
             </div>
             <hr>
             <div class="my-2">
-               <p class="font-weight-bold h5 pb-2"> <i class="fas fa-tags"></i> မျိုးတူရာ Tags အုပ်စု</p>
+               <p class="font-weight-bold h5 pb-2 text-secondary"> <i class="fas fa-tags"></i> မျိုးတူရာ Tags အုပ်စု</p>
               <div class="row d-flex ">
                 @foreach ($tagProducts as $tagProduct)
                   <form action="/tags/{{$tagProduct->id}}" method="get" class="m-1">                    

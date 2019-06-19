@@ -5,7 +5,7 @@
     <div class="row ">
         @include('layouts.nav')
         <div class="col-9 ">
-            <p class="font-weight-bold h4 mb-2">
+            <p class="font-weight-bold h4 mb-2 text-secondary">
                 လက်ကျန်ပြတ်နေပြီဖြစ်သော ကုန်ပစ္စည်းများ စာရင်း
             </p>
             <br>
@@ -30,7 +30,9 @@
                         echo ++$i ;
                         @endphp
                       </th>
-                      <td>{{$product->product}}</td>
+                      <td>
+                        <a href="/products/{{$product->id}}" class="text-decoration-none">{{$product->product}}</a>                        
+                      </td>
                       <td>{{$product->inStock}}</td>
                       <td>{{$product->price}}</td>
                       <td>{{Carbon\Carbon::parse($product->updated_at)->isoFormat('LLLL')}}</td>

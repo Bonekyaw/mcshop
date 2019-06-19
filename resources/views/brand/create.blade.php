@@ -7,7 +7,7 @@
         <div class="col-8 px-5 mt-3">
             <form action="/brands" method="post" >
               @csrf
-              <h3><strong>Brand အမည် အသစ်ထည့်ရန်</strong></h3>
+              <h3 class="text-secondary font-weight-bold">Brand အမည် အသစ်ထည့်ရန်</h3>
               <hr>
               @include('brand.form')
               <button type="submit" class="btn btn-primary shadow"><i class="fas fa-plus"></i> ထည့်သွင်းမည်</button>
