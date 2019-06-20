@@ -5,9 +5,6 @@
     <div class="row ">
         @include('layouts.nav')
         <div class="col-9 ">
-          @if (session()->has('success'))
-            <p class="alert alert-success text-center">{{session()->get('success')}}</p>
-          @else
           <div class="row d-flex">
             <p class="font-weight-bold h4 mr-5 text-secondary">
                 ရက်အလိုက် ရောင်းပြီး ကုန်ပစ္စည်းများ စာရင်း
@@ -47,6 +44,7 @@
                     </div>
 
               </form>
+              @can('create', App\History::class)
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
               <i class="fas fa-times"></i> စာရင်းများကို ပယ်ဖျက်လိုပါက နှိပ်ရန်</button>
 
@@ -93,9 +91,9 @@
                 </div>
               </div>
             </div>          
+        @endcan
           </div>
-            <br>
-          @endif
+          <br>
           <div class="row ">
 
                 <table class="table table-hover">

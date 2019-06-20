@@ -8,6 +8,7 @@
           <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$product->product}}  အကြောင်းအသေးစိတ်
           </p>
+          @can('view', $product)
           <div class="row d-flex ">
                 <a href="/products/{{$product->id}}/edit" class="btn btn-outline-warning text-primary mr-3"><i class="fas fa-redo"></i> &nbsp; Product အချက်အလက် ပြန်ပြောင်းလိုပါက</a>
                 <form action="/products/{{$product->id}}" method="post" >
@@ -42,6 +43,7 @@
 
                 </form>
             </div>
+          @endcan
           <hr>
 
           <div class="row d-flex">

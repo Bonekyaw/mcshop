@@ -49,7 +49,11 @@
 
             <div class="col-6">
             <p class="font-weight-bold h4 my-2 text-secondary">
-                သင်ရှာဖွေထားသော ကုန်ပစ္စည်းများ စာရင်း
+                သင်ရှာဖွေထားသော ကုန်ပစ္စည်းများ စာရင်း 
+                @isset ($products)
+	                - ( {{$products->count()}}  )
+            	@endisset 
+                
             </p>
             <br>
                 <table class="table table-hover">

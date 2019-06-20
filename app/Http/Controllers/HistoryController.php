@@ -51,7 +51,7 @@ class HistoryController extends Controller
         $month = request()->month;
         $year = request()->year;
         History::whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->delete();
-        return redirect('histories');
+        return redirect('histories')->with('success','Wow, သင် ရောင်းပြီးထုတ်ကုန်များကို လအလိုက် ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
 
     }
     public function getByOutStock()

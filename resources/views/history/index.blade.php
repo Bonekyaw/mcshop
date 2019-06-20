@@ -7,7 +7,7 @@
         <div class="col-9 ">
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
-          @else
+          @endif
           <div class="row d-flex">
             <p class="font-weight-bold h4 mr-5 text-secondary">
                 ရက်အလိုက် ရောင်းပြီး ကုန်ပစ္စည်းများ စာရင်း
@@ -46,7 +46,7 @@
                         <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> ရှာဖွေမယ်</button>
                     </div>
               </form>
-
+        @can('create', App\History::class)
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
               <i class="fas fa-times"></i> စာရင်းများကို ပယ်ဖျက်လိုပါက နှိပ်ရန်</button>
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -92,9 +92,10 @@
                   </div>
                 </div>
               </div>          
+        @endcan
           </div>
+
             <br>
-          @endif
           <div class="row ">
 
                 <table class="table table-hover">

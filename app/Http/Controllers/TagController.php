@@ -39,6 +39,7 @@ class TagController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Tag::class);
         $tag = new Tag();
         $brandCount = Brand::count();
         $catCount = Category::count();
@@ -69,13 +70,14 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
+        $tagProduct = $tag->products()->paginate(4);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::all();
         $historyCount = History::count();
         $bellNoti = Product::where('inStock','<',4)->count();
-        return view('tag.show', compact('tag', 'catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+        return view('tag.show', compact('tag', 'catCount','brandCount','tagProducts','productCount','historyCount','bellNoti','tagProduct'));
     }
 
     /**
@@ -86,6 +88,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
+        $this->authorize('update',$tag);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -116,6 +119,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
+        $this->authorize('delete',$tag);
         $tag->delete();
         return redirect('tags')->with('success','Tag အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
     }

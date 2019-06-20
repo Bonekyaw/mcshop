@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand font-weight-bold" href="{{ url('/home') }}">
+                <a class="navbar-brand font-weight-bold bg-primary text-white px-3" href="{{ url('/home') }}" style="border-radius: 15px;">
                     {{ config('app.name', 'MC Shop') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -59,26 +59,28 @@
                                     </a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{__('အသစ်ထပ်ထည့်ခြင်း') }} <span class="caret"></span>
-                                </a>
+                            @can('create', App\Product::class)
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{__('အသစ်ထပ်ထည့်ခြင်း') }} <span class="caret"></span>
+                                    </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item font-weight-bold" href="/categories/create">
-                                        {{ __('မျိုးကွဲသစ်') }}
-                                    </a>
-                                    <a class="dropdown-item font-weight-bold" href="/brands/create">
-                                        {{ __('တံဆိပ်သစ်') }}
-                                    </a>
-                                    <a class="dropdown-item font-weight-bold" href="/tags/create">
-                                        {{ __('မျိုးတူရာအစုသစ်') }}
-                                    </a>
-                                    <a class="dropdown-item font-weight-bold" href="/products/create">
-                                        {{ __('ထုတ်ကုန်သစ်') }}
-                                    </a>
-                                </div>
-                            </li>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item font-weight-bold" href="/categories/create">
+                                            {{ __('မျိုးကွဲသစ်') }}
+                                        </a>
+                                        <a class="dropdown-item font-weight-bold" href="/brands/create">
+                                            {{ __('တံဆိပ်သစ်') }}
+                                        </a>
+                                        <a class="dropdown-item font-weight-bold" href="/tags/create">
+                                            {{ __('မျိုးတူရာအစုသစ်') }}
+                                        </a>
+                                        <a class="dropdown-item font-weight-bold" href="/products/create">
+                                            {{ __('ထုတ်ကုန်သစ်') }}
+                                        </a>
+                                    </div>
+                                </li>
+                            @endcan
 
                             @if (isset ($bellNoti) )                           
                                 <li class="nav-item">

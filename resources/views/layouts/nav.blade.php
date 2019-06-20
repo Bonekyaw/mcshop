@@ -1,10 +1,5 @@
         <div class="col-3 " >
-{{--             <form action="" method="get" >
-                  <div class="form-group">
-                    <input type="text" class="form-control shadow" aria-describedby="emailHelp" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ">
-                  </div>
-            </form>
- --}}            <div  class="list-group shadow-sm mt-1">
+            <div  class="list-group shadow-sm mt-1">
                   <a class="list-group-item list-group-item-action  align-items-center font-weight-bold" 
                   href="/home">
                         <i class="fas fa-home"></i>  &nbsp; ပင်မစာမျက်နှာ 

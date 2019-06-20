@@ -42,6 +42,7 @@ class BrandController extends Controller
     public function create()
     {
         // $date = Date::parse('2019-06-13 16:55:00')->isoFormat('LLLL');
+        $this->authorize('create',Brand::class);
         $brand = new Brand();
         $brandCount = Brand::count();
         $catCount = Category::count();
@@ -72,13 +73,14 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
+        $brandProduct = $brand->products()->paginate(4);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::all();
         $historyCount = History::count();
         $bellNoti = Product::where('inStock','<',4)->count();
-        return view('brand.show', compact('brand', 'catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+        return view('brand.show', compact('brand', 'catCount','brandCount','tagProducts','productCount','historyCount','bellNoti','brandProduct'));
     }
 
     /**
@@ -89,6 +91,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
+        $this->authorize('update',$brand);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -119,6 +122,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
+        $this->authorize('delete',$brand);
         $brand->delete();
         return redirect('brands')->with('success','Brand အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
     }

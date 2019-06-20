@@ -8,6 +8,7 @@
           <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$category->category}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
           </p>
+          @can('update', $category)
           <div class="row d-flex ">
             <a href="/categories/{{$category->id}}/edit" class="btn btn-outline-warning text-primary mr-3 "><i class="fas fa-redo"></i> &nbsp; Category အမည်ပြန်ပြောင်းလိုပါကနှိပ်ရန်</a>
             <form action="/categories/{{$category->id}}" method="post" >
@@ -41,11 +42,12 @@
               
             </form>
           </div>
+          @endcan
           <hr>
 
           <div class="row d-flex">
 
-           @foreach ($category->products as $product)
+           @foreach ($categoryProduct as $product)
 
             <div class=" mb-3 ml-2 mr-3 d-flex flex-column  text-center">
               @if ($product->photo)
@@ -69,6 +71,9 @@
 
           @endforeach
 
+        </div>
+        <div class="mt-2">
+          {{$categoryProduct->links()}}
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@
           <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$brand->brand}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
           </p>
+          @can('update', $brand)
           <div class="row d-flex ">
             <a href="/brands/{{$brand->id}}/edit" class="btn btn-outline-warning text-primary mr-3 "><i class="fas fa-redo"></i> &nbsp; Brand အမည်ပြန်ပြောင်းလိုပါကနှိပ်ရန်</a>
             <form action="/brands/{{$brand->id}}" method="post" >
@@ -41,11 +42,12 @@
               
             </form>
           </div>
+          @endcan
           <hr>
 
           <div class="row d-flex">
 
-           @foreach ($brand->products as $product)
+           @foreach ($brandProduct as $product)
 
             <div class=" mb-3 ml-2 mr-3 d-flex flex-column  text-center">
               @if ($product->photo)
@@ -70,7 +72,10 @@
           @endforeach
 
         </div>
-</div>
+        <div class="mt-2">
+          {{$brandProduct->links()}}
+        </div>
+      </div>
     </div>
 </div>
 @endsection

@@ -8,6 +8,7 @@
           <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$tag->tag}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
           </p>
+          @can('update', $tag)
           <div class="row d-flex ">
             <a href="/tags/{{$tag->id}}/edit" class="btn btn-outline-warning text-primary mr-3"><i class="fas fa-redo"></i> &nbsp; Tag အမည်ပြန်ပြောင်းလိုပါကနှိပ်ရန်</a>
             <form action="/tags/{{$tag->id}}" method="post" >
@@ -41,11 +42,12 @@
               
             </form>
           </div>
+          @endcan
           <hr>
 
           <div class="row d-flex">
 
-           @foreach ($tag->products as $product)
+           @foreach ($tagProduct as $product)
 
             <div class=" mb-3 ml-2 mr-3 d-flex flex-column  text-center">
               @if ($product->photo)
@@ -70,7 +72,10 @@
           @endforeach
 
         </div>
-</div>
+          <div class="mt-2">
+            {{$tagProduct->links()}}
+          </div>
+      </div>
     </div>
 </div>
 @endsection

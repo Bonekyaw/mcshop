@@ -7,12 +7,11 @@
         <div class="col-9 ">
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
-          @else
+          @endif
             <p class="font-weight-bold h4 text-secondary">
                 Product ထုတ်ကုန်များ ပြသခြင်း
             </p>
             <hr>
-          @endif
 {{--           @foreach ($products as $product)
               @if ($product->inStock < 5 && $product->inStock != 0)
                 <div class="bg-warning text-center py-1 mb-sm-1 text-danger">{{$product->product}} မှာ ပစ္စည်းလက်ကျန် {{$product->inStock}} ခုသာ ကျန်ရှိပါတော့တယ်</div>

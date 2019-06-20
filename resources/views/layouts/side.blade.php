@@ -1,3 +1,4 @@
+@can('create', App\Product::class)
         <div class="col-1 ">
             <button type="button" class="shadow btn btn-dark text-white disabled mt-3">အသစ်ထည့်ရန်</button>
             <hr>  
@@ -16,3 +17,4 @@
                   </form>
             </div>
         </div>      
+@endcan        

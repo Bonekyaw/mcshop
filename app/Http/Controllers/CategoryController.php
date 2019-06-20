@@ -39,6 +39,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Category::class);
         $category = new Category();
         $brandCount = Brand::count();
         $catCount = Category::count();
@@ -69,13 +70,14 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        $categoryProduct = $category->products()->paginate(4);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
         $tagProducts = Tag::all();
         $historyCount = History::count();
         $bellNoti = Product::where('inStock','<',4)->count();
-        return view('category.show', compact('category','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+        return view('category.show', compact('category','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti','categoryProduct'));
     }
 
     /**
@@ -86,6 +88,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $this->authorize('update',$category);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -116,6 +119,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete',$category);
         $category->delete();
         return redirect('categories')->with('success','Category အဟောင်းကို ပယ်ဖျက်တာ အောင်မြင်ပါသည်');
     }

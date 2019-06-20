@@ -42,6 +42,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $this->authorize('create',Product::class);
         $product = new Product();
         $brandCount = Brand::count();
         $catCount = Category::count();
@@ -94,6 +95,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $this->authorize('update',$product);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -135,6 +137,7 @@ class ProductController extends Controller
         // if (file_exists(public_path('storage/'.$product->photo))) {
         //     unlink(public_path('storage/'.$product->photo));
         // }
+        $this->authorize('delete',$product);
         Storage::delete('public/'.$product->photo);
         $product->delete();
         $product->tags()->detach();
