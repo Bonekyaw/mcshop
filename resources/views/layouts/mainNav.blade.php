@@ -1,8 +1,8 @@
         <div class="col-3 " >
-            <form  >
+            <form  action="/search" method="post">
             	@csrf            	
                   <div class="form-group">
-                    <input type="text" class="form-control shadow" aria-describedby="emailHelp" id="search" name="search" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ" value="">
+                    <input type="text" class="form-control shadow" aria-describedby="emailHelp" id="search" name="search" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ" value="" required>
                   </div>
             </form>
         </div>

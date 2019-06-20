@@ -32,3 +32,4 @@ Route::post('/histories','HistoryController@getByDate');
 Route::post('/histories/delete','HistoryController@deleteByMonth');
 Route::get('/histories/outOfStock','HistoryController@getByOutStock');
 
+Route::post('/search','HomeController@search');

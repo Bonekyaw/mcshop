@@ -5,9 +5,6 @@
     <div class="row ">
         @include('layouts.nav')
         <div class="col-8 ">
-          @if (session()->has('success'))
-            <p class="alert alert-success text-center">{{session()->get('success')}}</p>
-          @endif
           <p class="font-weight-bold h4 mt-3 text-secondary">
             {{$product->product}}  အကြောင်းအသေးစိတ်
           </p>

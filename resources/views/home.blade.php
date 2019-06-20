@@ -55,48 +55,38 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
+                      <th scope="col">#</th>
                       <th scope="col">ထုတ်ကုန်အမည်</th>
                       <th scope="col">ဈေးနှုန်း</th>
                       <th scope="col">လက်ကျန်</th>
-                      <th scope="col">ရောင်းရခုရေ</th>
                     </tr>
                   </thead>
                   <tbody id="tbody">
-{{--             @php
-                $i = 0;
-            @endphp   
- --}}{{--             	@if ($productFound)
-                      @foreach ($productFound as $product)
+            @isset ($products)
+                      @foreach ($products as $product)
                     <tr>
-                      <th scope="row">
-                        @php
-                        echo ++$i ;
-                        @endphp
-                      </th>
+                      <td scope="row">
+			              @if ($product->photo)
+			                <img src="{{ asset('storage/'.$product->photo) }}" alt="..."  style="border-radius: 10px;width: 60px;height: 40px;">
+			              @else
+			                <img src="{{ asset('storage/uploads/pro.jpg') }}" alt="..." style="border-radius: 10px;width: 60px;height: 40px;">
+			              @endif
+                      </td>
                       <td>
                         <a href="/products/{{$product->id}}" class="text-decoration-none">{{$product->product}}</a>                        
                       </td>
                       <td>{{$product->price}}</td>
                       <td>{{$product->inStock}}</td>
-                      <td >
-              <form action="/sold" method="post" >
-                @csrf
-                    <input type="hidden" name="id" value="{{$product->id}}"> 
-                    <div class="input-group ">
-                      <input type="number" class="form-control shadow-sm" name="sold" id="sold" placeholder="eg. 5" aria-label="Text input with segmented dropdown button" 
-                      value="1">
-				      <button type="submit" class="btn btn-primary"><i class="far fa-edit"></i></button>              
-                    </div>
-			  </form>
-                      </td>
                     </tr>
                     @endforeach
-            @endif       
- --}}             </tbody>
+            @endisset
+             </tbody>
                 </table>           
+            @isset ($products)
+	             {{$products->links()}}
+            @endisset
             </div>
-{{--             {{$productFound->links()}}
- --}}
+
             <div class="col-3">
 				<ul class="list-group list-group-flush shadow-sm mb-3 ">
 				  <li class="list-group-item font-weight-bold text-primary">
@@ -140,7 +130,6 @@
 			</div>
     </div>
 </div>
-
 
 
 @endsection
