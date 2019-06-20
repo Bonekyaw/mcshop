@@ -55,18 +55,18 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">ထုတ်ကုန်အမည်</th>
                       <th scope="col">ဈေးနှုန်း</th>
                       <th scope="col">လက်ကျန်</th>
                       <th scope="col">ရောင်းရခုရေ</th>
                     </tr>
                   </thead>
-                  <tbody>
-            @php
+                  <tbody id="tbody">
+{{--             @php
                 $i = 0;
-            @endphp          
-                    @foreach ($products as $product)
+            @endphp   
+ --}}{{--             	@if ($productFound)
+                      @foreach ($productFound as $product)
                     <tr>
                       <th scope="row">
                         @php
@@ -91,10 +91,12 @@
                       </td>
                     </tr>
                     @endforeach
-                  </tbody>
+            @endif       
+ --}}             </tbody>
                 </table>           
             </div>
-
+{{--             {{$productFound->links()}}
+ --}}
             <div class="col-3">
 				<ul class="list-group list-group-flush shadow-sm mb-3 ">
 				  <li class="list-group-item font-weight-bold text-primary">
@@ -103,15 +105,23 @@
 					</div> 
 					ယနေ့ အရောင်းစာရင်း
 				  </li>
-				  @for ($i = 0; $i < 8 ; $i++)
-					  <li class="list-group-item">
-					  		<div class="d-flex w-100 justify-content-between">
-				      			<a href="/products/{{$histories[$i]->product->id}}" class="mb-1">{{$histories[$i]->product->product}}</a>
-				      			<small >{{$histories[$i]->created_at->diffForHumans()}}</small>
-				    		</div>
-				    		<small class="mb-1 ">{{$histories[$i]->quantity}} ခု ရောင်းရပါသည်</small>
-					  </li>
-				  @endfor
+				  @php
+				  	$i = 0;
+				  @endphp
+					  @foreach ($histories as $history)
+						  @php
+						  	$i++;
+						  @endphp
+							  @if ($i < 8)
+								  <li class="list-group-item">
+								  		<div class="d-flex w-100 justify-content-between">
+							      			<a href="/products/{{$history->product->id}}" class="mb-1">{{$history->product->product}}</a>
+							      			<small >{{$history->created_at->diffForHumans()}}</small>
+							    		</div>
+							    		<small class="mb-1 ">{{$history->quantity}} ခု ရောင်းရပါသည်</small>
+								  </li>
+							  @endif
+					  @endforeach
 				</ul>
 		        <form action="/histories" method="post">
 		             	@csrf
@@ -130,4 +140,7 @@
 			</div>
     </div>
 </div>
+
+
+
 @endsection

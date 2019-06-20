@@ -27,11 +27,12 @@ class HomeController extends Controller
         $cats = \App\Category::with('products')->get();
         $brands = \App\Brand::with('products')->get();
         $bellNoti = \App\Product::where('inStock','<',4)->count();
-        $products = \App\Product::all();
+        $productCount = \App\Product::count();
         $tagProducts = \App\Tag::all();
         $histories = \App\History::with('product:id,product')->wheredate('created_at', '=', now())->orderBy('created_at','desc')->get();
         $today = (\App\History::wheredate('created_at', '=', now())->count()/100)*100;
         $yesterday = (\App\History::wheredate('created_at', '=', Carbon::yesterday())->count()/100)*100;
-        return view('home', compact('cats','brands','tagProducts','products','bellNoti','histories','today','yesterday'));
+        return view('home', compact('cats','brands','tagProducts','productCount','bellNoti','histories','today','yesterday'));
     }
+    
 }

@@ -1,7 +1,8 @@
         <div class="col-3 " >
-            <form action="" method="get" >
+            <form  >
+            	@csrf            	
                   <div class="form-group">
-                    <input type="text" class="form-control shadow" aria-describedby="emailHelp" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ">
+                    <input type="text" class="form-control shadow" aria-describedby="emailHelp" id="search" name="search" placeholder="ဒီနေရာမှာ စာရိုက်ရှာပါ" value="">
                   </div>
             </form>
         </div>
@@ -27,7 +28,7 @@
 		                  </a>
 		                  <a class="dropdown-item" 
 		                  href="/products">
-		                       <span><i class="fas fa-database"></i> &nbsp; ထုတ်ကုန်များ</span>  <span class="badge badge-primary badge-pill">{{$products->count() ?? '' }}</span>
+		                       <span><i class="fas fa-database"></i> &nbsp; ထုတ်ကုန်များ</span>  <span class="badge badge-primary badge-pill">{{$productCount ?? '' }}</span>
 		                  </a>
 		                  <a class="dropdown-item" 
 		                  href="/histories/outOfStock">
