@@ -33,6 +33,10 @@
 					  </div>
 				</div>
 				<hr>
+				<div class="font-weight-bold shadow p-3 text-secondary">
+					ယနေ့ ရောင်းရငွေပေါင်း = <em class="text-success">{{$total}} Ks</em> 
+				</div>
+				<hr>
 
 				<div class="my-4">
 	               <p class="font-weight-bold h5 pb-2 text-secondary"> <i class="fas fa-tags"></i> မျိုးတူရာ Tags အုပ်စု</p>
