@@ -36,7 +36,7 @@ class HistoryController extends Controller
         $day = request()->day;
         $month = request()->month;
         $year = request()->year;
-        $historyPagi = History::whereDay('created_at', '=', $day )->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->paginate(15);
+        $historyPagi = History::whereDay('created_at', '=', $day )->whereMonth('created_at', '=', $month)->whereYear('created_at', '=', $year)->orderBy('created_at','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

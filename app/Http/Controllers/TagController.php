@@ -70,7 +70,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        $tagProduct = $tag->products()->paginate(4);
+        $tagProduct = $tag->products()->paginate(12);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

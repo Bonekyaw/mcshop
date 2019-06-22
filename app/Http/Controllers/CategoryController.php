@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $categoryProduct = $category->products()->paginate(4);
+        $categoryProduct = $category->products()->paginate(12);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

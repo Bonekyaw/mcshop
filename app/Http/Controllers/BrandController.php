@@ -73,7 +73,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        $brandProduct = $brand->products()->paginate(4);
+        $brandProduct = $brand->products()->paginate(12);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

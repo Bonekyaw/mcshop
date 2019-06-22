@@ -101,7 +101,7 @@
 				  	<div class="spinner-grow spinner-grow-sm text-primary" role="status">
 					  <span class="sr-only">Loading...</span>
 					</div> 
-					ယနေ့ အရောင်းစာရင်း
+					ယနေ့ အရောင်းစာရင်း ( {{$histories->count() ?? ''}} )
 				  </li>
 				  @php
 				  	$i = 0;
@@ -113,7 +113,7 @@
 							  @if ($i < 8)
 								  <li class="list-group-item">
 								  		<div class="d-flex w-100 justify-content-between">
-							      			<a href="/products/{{$history->product->id}}" class="mb-1">{{$history->product->product}}</a>
+							      			<a href="/products/{{$history->product->id}}" class="mb-1 text-decoration-none">{{$history->product->product}}</a>
 							      			<small >{{$history->created_at->diffForHumans()}}</small>
 							    		</div>
 							    		<small class="mb-1 ">{{$history->quantity}} ခု ရောင်းရပါသည်</small>
