@@ -42,7 +42,7 @@ class HomeController extends Controller
      public function search(Request $request)
      {
         $search = $request->get('search');
-        $products = \App\Product::where('product','LIKE','%'.$search.'%')->paginate(5);
+        $products = \App\Product::where('product','LIKE','%'.$search.'%')->paginate(30);
         $cats = \App\Category::with('products')->get();
         $brands = \App\Brand::with('products')->get();
         $bellNoti = \App\Product::where('inStock','<',4)->count();

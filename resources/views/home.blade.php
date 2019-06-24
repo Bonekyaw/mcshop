@@ -33,7 +33,7 @@
 					  </div>
 				</div>
 				<hr>
-				<div class="font-weight-bold shadow p-3 text-secondary">
+				<div class="font-weight-bold shadow p-3 text-secondary" style="border-radius: 28px;">
 					ယနေ့ ရောင်းရငွေပေါင်း = <em class="text-success">{{$total}} Ks</em> 
 				</div>
 				<hr>
