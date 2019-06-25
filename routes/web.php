@@ -28,6 +28,9 @@ Route::resources([
 
 Route::post('/sold','ProductController@sold');
 Route::get('/histories','HistoryController@index');
+Route::get('/histories/{history}/edit','HistoryController@edit');
+Route::post('/histories/{history}/update','HistoryController@update');
+Route::post('/histories/{history}/delete','HistoryController@destroy');
 Route::post('/histories','HistoryController@getByDate');
 Route::post('/histories/delete','HistoryController@deleteByMonth');
 Route::get('/histories/outOfStock','HistoryController@getByOutStock');

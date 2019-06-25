@@ -22,7 +22,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $historyPagi = History::with('product:id,product')->orderBy('updated_at','desc')->limit(60)->paginate(15);
+        $historyPagi = History::with('product:id,product')->orderBy('created_at','desc')->limit(60)->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -66,5 +66,33 @@ class HistoryController extends Controller
         return view('history.stock', compact('outStockPagi','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
 
     }
+    public function edit(History $history)
+    {
+        $this->authorize('update',$history);
+        $brandCount = Brand::count();
+        $catCount = Category::count();
+        $productCount = Product::count();
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('history.edit', compact('history','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
+    }
+    public function update(History $history)
+    {
+        $history->update(['quantity' => request()->quantity]);
+        return redirect('home');
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(History $history)
+    {
+        $this->authorize('delete',$history);
+        $history->delete();
+        return redirect('home');
+    }
 }

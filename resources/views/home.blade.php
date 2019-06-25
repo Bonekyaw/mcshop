@@ -113,7 +113,7 @@
 							  @if ($i < 8)
 								  <li class="list-group-item">
 								  		<div class="d-flex w-100 justify-content-between">
-							      			<a href="/products/{{$history->product->id}}" class="mb-1 text-decoration-none">{{$history->product->product}}</a>
+							      			<a href="/histories/{{$history->id}}/edit" class="mb-1 text-decoration-none">{{$history->product->product}}</a>
 							      			<small >{{$history->created_at->diffForHumans()}}</small>
 							    		</div>
 							    		<small class="mb-1 ">{{$history->quantity}} ခု ရောင်းရပါသည်</small>

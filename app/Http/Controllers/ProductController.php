@@ -181,6 +181,6 @@ class ProductController extends Controller
             ]) ;
             event(new HistoryEvent($product, $quantity));
         }
-        return back();
+        return redirect('home');
     }
 }

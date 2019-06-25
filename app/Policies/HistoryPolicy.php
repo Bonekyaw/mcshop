@@ -54,7 +54,9 @@ class HistoryPolicy
      */
     public function update(User $user, History $history)
     {
-        //
+        return in_array($user->email,[
+            'phonenai2014@gmail.com'
+        ]);
     }
 
     /**
