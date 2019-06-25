@@ -6,7 +6,7 @@
         @include('layouts.nav')
         <div class="col-9 ">
           <p class="font-weight-bold h4 mt-3 text-secondary">
-            {{$category->category}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
+            <span class="text-primary">{{$category->category}}</span> ခေါင်းစဉ်အောက်ရှိ ထုတ်ကုန်များ 
           </p>
           @can('update', $category)
           <div class="row d-flex ">

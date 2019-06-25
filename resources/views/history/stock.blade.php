@@ -9,7 +9,7 @@
                 လက်ကျန်ပြတ်နေပြီဖြစ်သော ကုန်ပစ္စည်းများ စာရင်း
             </p>
             <br>
-                <table class="table table-hover">
+                <table class="table table-striped table-hover">
                   <thead>
                     <tr>
                       <th scope="col">နံပါတ်စဉ်</th>

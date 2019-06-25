@@ -96,7 +96,7 @@
           <br>
           <div class="row ">
 
-                <table class="table table-hover">
+                <table class="table table-striped table-hover">
                   <thead>
                     <tr>
                       <th scope="col">နံပါတ်စဉ်</th>

@@ -24,7 +24,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brandPagi = Brand::with('products:id')->orderBy('updated_at','desc')->paginate(30);
+        $brandPagi = Brand::with('products:id')->orderBy('updated_at','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

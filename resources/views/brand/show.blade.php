@@ -6,7 +6,7 @@
         @include('layouts.nav')
         <div class="col-9 ">
           <p class="font-weight-bold h4 mt-3 text-secondary">
-            {{$brand->brand}} နှင့် ပတ်သက်သော ထုတ်ကုန်များ 
+            <span class="text-primary">{{$brand->brand}}</span> ၏ ထုတ်ကုန်များ 
           </p>
           @can('update', $brand)
           <div class="row d-flex ">

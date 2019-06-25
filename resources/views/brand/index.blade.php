@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row ">
         @include('layouts.nav')
-        <div class="col-9 ">
+        <div class="col-8 ">
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @endif
@@ -12,24 +12,47 @@
                 Brand တံဆိပ်များ 
             </p>
             <hr>
-          <div class="row d-flex">
 
-           @foreach ($brandPagi as $brand)
 
-                <div class=" m-1 text-center d-flex flex-column justify-content-center" style="width: 10rem;border-radius: 20px; height: 100px; background: url({{ asset('storage/uploads/brand.jpg')  }});">
-                   <a href="/brands/{{$brand->id}}" class=" font-weight-bold text-white h4 text-decoration-none" 
-                    style="border-radius: 18px;">{{$brand->brand}}</a>                              
-                  <a href="/brands/{{$brand->id}}" class="text-warning font-weight-bold text-decoration-none">{{$brand->products()->count()}}</a>
-                </div>
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th scope="col">တံဆိပ်အမည်</th>
+                      <th scope="col">ထုတ်ထားသောပစ္စည်းများ စုစုပေါင်း</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($brandPagi as $brand)
+                    <tr>
+                      <td>
+                      </td>
+                      <td>
+                            <a href="/brands/{{$brand->id}}" class=" text-decoration-none " 
+                            >{{$brand->brand}}</a>                      
+                      </td>
+                      <td>
+                            {{$brand->products()->count()}}
+                      </td>
+                      <td>
+                           @can('update', $brand)
+                                  <a href="/brands/{{$brand->id}}" class="btn btn-success "> ပစ္စည်းကြည့်မယ်</a>
+                                  <a href="/brands/{{$brand->id}}/edit" class="btn btn-primary "> အမည်ပြောင်းမယ်</a>
+                          @endcan
 
-           @endforeach
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                <div class="mt-4">
+                      {{$brandPagi->links()}}
+                </div>           
+ 
 
           </div>
-          <div class="mt-2">
-               {{$brandPagi->links()}}
-          </div>
-
-        </div>
+          @include('layouts.side')
     </div>
 </div>
 @endsection

@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $catPagi = Category::with('products')->orderBy('updated_at','desc')->paginate(30);
+        $catPagi = Category::with('products:id')->orderBy('updated_at','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row ">
         @include('layouts.nav')
-        <div class="col-9 ">
+        <div class="col-8 ">
           @if (session()->has('success'))
             <p class="alert alert-success text-center">{{session()->get('success')}}</p>
           @endif
@@ -12,23 +12,46 @@
                 Tag မျိုးတူရာတူရာ ပေါင်းစုခြင်း
             </p>
             <hr>
-          <div class="row d-flex">
+                <table class="table table-striped table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th scope="col">Tag အမည်</th>
+                      <th scope="col">သက်ဆိုင်သောပစ္စည်းများ စုစုပေါင်း</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($tagPagi as $tag)
+                    <tr>
+                      <td>
+                      </td>
+                      <td>
+                            <a href="/tags/{{$tag->id}}" class=" text-decoration-none " 
+                            >{{$tag->tag}}</a>                      
+                      </td>
+                      <td>
+                            {{$tag->products()->count()}}
+                      </td>
+                      <td>
+                           @can('update', $tag)
+                                  <a href="/tags/{{$tag->id}}" class="btn btn-success "> ပစ္စည်းကြည့်မယ်</a>
+                                  <a href="/tags/{{$tag->id}}/edit" class="btn btn-primary "> အမည်ပြောင်းမယ်</a>
+                          @endcan
 
-           @foreach ($tagPagi as $tag)
-                <div class=" m-1 text-center d-flex flex-column justify-content-center" style="width: 10rem;border-radius: 20px; height: 100px; background: url({{ asset('storage/uploads/tag.jpg')  }});">
-                   <a href="/tags/{{$tag->id}}" class=" font-weight-bold text-white h4" 
-                    style="border-radius: 18px;">{{$tag->tag}}</a>                              
-                  <a href="/tags/{{$tag->id}}" class="text-warning font-weight-bold">{{$tag->products()->count()}}</a>
-                </div>
-
-           @endforeach
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+                <div class="mt-4">
+                      {{$tagPagi->links()}}
+                </div>           
+ 
 
           </div>
-          <div class="mt-2">
-               {{$tagPagi->links()}}
-          </div>
-
-        </div>
+          @include('layouts.side')
     </div>
 </div>
 @endsection
+
