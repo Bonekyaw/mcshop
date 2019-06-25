@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Spatie\DbDumper\Databases\MySql;
 
+
 class BackupDatabaseCommand extends Command
 {
     /**
@@ -41,7 +42,7 @@ class BackupDatabaseCommand extends Command
      */
     public function handle()
     {
-        File::put('dump.sql','');
+        // File::put('dump.sql','');
         MySql::create()->setDbName(env('DB_DATABASE'))
                         ->setUserName(env('DB_USERNAME'))
                         ->setPassword(env('DB_PASSWORD'))

@@ -40,7 +40,7 @@
                     @endforeach
                   </tbody>
                 </table>           
-
+              {{$outStockPagi->links()}}
         </div>
     </div>
 </div>

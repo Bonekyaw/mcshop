@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     'backup' => [
@@ -94,6 +93,7 @@ return [
          * The directory where the temporary files will be stored.
          */
         'temporary_directory' => storage_path('app/backup-temp'),
+        // 'temporary_directory' => 'F:\backup',
     ],
 
     /*
@@ -120,9 +120,9 @@ return [
          */
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
-        'mail' => [
-            'to' => 'phonenai2014@gmail.com',
-        ],
+        // 'mail' => [
+        //     'to' => 'phonenai2014@gmail.com',
+        // ],
 
         'slack' => [
             'webhook_url' => '',
