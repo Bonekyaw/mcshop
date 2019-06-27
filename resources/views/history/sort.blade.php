@@ -118,7 +118,7 @@
                       <td>{{$history->product->product}}</td>
                       <td>{{$history->quantity}}</td>
                       <td>{{Carbon\Carbon::parse($history->created_at)->isoFormat('LLLL')}}</td>
-                      <td>{{auth()->user()->name}}</td>
+                      <td>{{$history->user->name}}</td>
                     </tr>
                     @endforeach
                   </tbody>

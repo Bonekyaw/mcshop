@@ -181,9 +181,10 @@ class ProductController extends Controller
                 'inStock' => $inStock - $sold
             ]) ;
             event(new HistoryEvent($product, $sold));
+            return redirect('home');
         } else {
             return back()->with('fail','သင် စာရင်းသွင်းတာ တခုခု မှားယွင်းနေပါသည်... ပစ္စည်းလက်ကျန်ကို စစ်ဆေးပါ');
         }
-        return redirect('home');
+        
     }
 }

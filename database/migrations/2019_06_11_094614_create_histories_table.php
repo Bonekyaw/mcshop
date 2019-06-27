@@ -16,6 +16,7 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('user_id');
             $table->integer('quantity');
             $table->timestamps();
         });

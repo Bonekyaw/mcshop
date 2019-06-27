@@ -29,6 +29,7 @@ class StoreSoldProductListener
     {
         History::create([
             'product_id' => $event->product->id,
+            'user_id' => auth()->user()->id,
             'quantity' => $event->sold
         ]);
     }
