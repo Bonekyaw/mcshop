@@ -81,11 +81,14 @@ class HistoryController extends Controller
     }
     public function update(History $history)
     {
-        $quantity = request()->quantity;
-        $quantityBetween = $history->quantity - $quantity;
+        $quantityEdited = request()->quantity;
+        $quantityBefore = $history->quantity;
+        $quantityBetween = $quantityBefore - $quantityEdited;
         $product = $history->product;
-        if ($quantity > 0 && $product->inStock > $quantityBetween ) {
-            $history->update(['quantity' => $quantity]);
+        $productStock = $product->inStock;
+
+        if ($quantityEdited > 0 && (($productStock + $quantityBefore) - $quantityEdited) >= 0 ) {
+            $history->update(['quantity' => $quantityEdited]);
             event(new ProductEvent($product, $quantityBetween));
             return redirect('home');
         } else {
