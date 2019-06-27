@@ -10,22 +10,21 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class HistoryEvent
+class ProductEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
     public $product;
-    public $sold;
+    public $quantityBetween;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($product, $sold)
+    public function __construct($product, $quantityBetween)
     {
         $this->product = $product;
-        $this->sold = $sold;
+        $this->quantityBetween = $quantityBetween;
     }
 
     /**

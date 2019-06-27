@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\HistoryEvent::class => [
             \App\Listeners\StoreSoldProductListener::class,
         ],
+        \App\Events\ProductEvent::class => [
+            \App\Listeners\UpdateProductListener::class,
+        ],
     ];
 
     /**

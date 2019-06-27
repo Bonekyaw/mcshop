@@ -8,6 +8,8 @@ use App\Tag;
 use App\Product;
 use App\History;
 use Illuminate\Http\Request;
+use App\Events\ProductEvent;
+
 
 class HistoryController extends Controller
 {
@@ -79,8 +81,17 @@ class HistoryController extends Controller
     }
     public function update(History $history)
     {
-        $history->update(['quantity' => request()->quantity]);
-        return redirect('home');
+        $quantity = request()->quantity;
+        $quantityBetween = $history->quantity - $quantity;
+        $product = $history->product;
+        if ($quantity > 0 && $product->inStock > $quantityBetween ) {
+            $history->update(['quantity' => $quantity]);
+            event(new ProductEvent($product, $quantityBetween));
+            return redirect('home');
+        } else {
+            return back()->with('fail','သင် အရောင်းစာရင်းသွင်းတာ တခုခု လွဲမှားနေပါသည်... ပစ္စည်းလက်ကျန်စစ်ပါ');
+        }
+        
     }
 
     /**
@@ -91,8 +102,11 @@ class HistoryController extends Controller
      */
     public function destroy(History $history)
     {
+        $product = $history->product;
+        $quantityBetween = $history->quantity;
         $this->authorize('delete',$history);
         $history->delete();
+        event(new ProductEvent($product, $quantityBetween));
         return redirect('home');
     }
 }

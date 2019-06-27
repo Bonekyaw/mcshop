@@ -5,7 +5,12 @@
     <div class="row ">
         @include('layouts.nav')
         <div class="col-8 px-5 mt-3">
-            <h3 class="text-secondary font-weight-bold">(ရောင်းပြီး) {{$history->product->product}} </h3>
+          @if (session()->has('fail'))
+            <p class="alert alert-success text-center">{{session()->get('fail')}}</p>
+          @endif
+            <h3 class="text-secondary font-weight-bold">(ရောင်းပြီး) 
+              <a href="/products/{{$history->product->id}}"  class="text-decoration-none">{{$history->product->product}} </a>
+            </h3>
             <div class="mt-3">
               
             </div>

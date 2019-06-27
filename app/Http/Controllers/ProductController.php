@@ -174,12 +174,15 @@ class ProductController extends Controller
     public function sold ()
     {
             $product = Product::findOrFail(request()->id);
-        if (request()->sold > 0 && $product->inStock > 0) {
-            $quantity =   request()->sold;          
+            $sold = request()->sold;
+            $inStock = $product->inStock;
+        if ($sold > 0 && $inStock >= $sold ) {
             $product->update([
-                'inStock' => $product->inStock - request()->sold
+                'inStock' => $inStock - $sold
             ]) ;
-            event(new HistoryEvent($product, $quantity));
+            event(new HistoryEvent($product, $sold));
+        } else {
+            return back()->with('fail','သင် စာရင်းသွင်းတာ တခုခု မှားယွင်းနေပါသည်... ပစ္စည်းလက်ကျန်ကို စစ်ဆေးပါ');
         }
         return redirect('home');
     }

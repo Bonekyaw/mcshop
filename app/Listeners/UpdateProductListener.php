@@ -2,12 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\HistoryEvent;
+use App\Events\ProductEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\History;
 
-class StoreSoldProductListener
+class UpdateProductListener
 {
     /**
      * Create the event listener.
@@ -22,14 +21,14 @@ class StoreSoldProductListener
     /**
      * Handle the event.
      *
-     * @param  HistoryEvent  $event
+     * @param  ProductEvent  $event
      * @return void
      */
-    public function handle(HistoryEvent $event)
+    public function handle(ProductEvent $event)
     {
-        History::create([
-            'product_id' => $event->product->id,
-            'quantity' => $event->sold
+        $product = $event->product;
+        $product->update([
+            'inStock' => $product->inStock + $event->quantityBetween
         ]);
     }
 }
