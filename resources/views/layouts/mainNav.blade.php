@@ -1,4 +1,4 @@
-        <div class="col-3 " >
+<div class="col-3 " >
             <form  action="/search" method="post">
             	@csrf            	
                   <div class="form-group">
