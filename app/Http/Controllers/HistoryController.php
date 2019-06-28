@@ -70,7 +70,7 @@ class HistoryController extends Controller
     }
     public function edit(History $history)
     {
-        $this->authorize('update',$history);
+        // $this->authorize('update',$history);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -111,5 +111,16 @@ class HistoryController extends Controller
         $history->delete();
         event(new ProductEvent($product, $quantityBetween));
         return redirect('home');
+    }
+    public function displayEdited()
+    {
+        $historyPagi = History::with('product:id,product')->whereColumn('updated_at','>','created_at')->orderBy('updated_at','desc')->paginate(15);
+        $brandCount = Brand::count();
+        $catCount = Category::count();
+        $productCount = Product::count();
+        $tagProducts = Tag::all();
+        $historyCount = History::count();
+        $bellNoti = Product::where('inStock','<',4)->count();
+        return view('history.displayEdited', compact('historyPagi','catCount','brandCount','tagProducts','productCount','historyCount','bellNoti'));
     }
 }

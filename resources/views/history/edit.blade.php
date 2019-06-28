@@ -14,7 +14,8 @@
             <div class="mt-3">
               
             </div>
-              <form action="/histories/{{$history->id}}/delete" method="post" >
+            @can('update', $history)
+                <form action="/histories/{{$history->id}}/delete" method="post" >
                 @csrf
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter">
@@ -43,6 +44,8 @@
                 </div>            
                 
               </form>
+
+            @endcan
 
             <hr>
             <div class="">

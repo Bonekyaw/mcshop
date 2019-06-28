@@ -117,7 +117,9 @@
                       <th scope="row">@php
                         echo ++$i ;
                       @endphp</th>
-                      <td>{{$history->product->product}}</td>
+                      <td>
+                        <a href="/histories/{{$history->id}}/edit" class="text-decoration-none">{{$history->product->product}}</a>                        
+                      </td>
                       <td>{{$history->quantity}}</td>
                       <td>{{Carbon\Carbon::parse($history->created_at)->isoFormat('LLLL')}}</td>
                       <td>{{$history->user->name}}</td>

@@ -53,9 +53,11 @@
 
             <div class="col-6">
             <p class="font-weight-bold h4 my-2 text-secondary">
-                သင်ရှာဖွေထားသော ကုန်ပစ္စည်းများ စာရင်း 
+                @empty ($products)               
+                    အရောင်းစာရင်း သွင်းလိုသော ပစ္စည်းများကို ရှာပါ ...
+                @endempty
                 @isset ($products)
-	                - ( {{$products->count()}}  )
+	               သင်ရှာဖွေထားသော ကုန်ပစ္စည်းများ စာရင်း  - ( {{$products->count()}}  )
             	@endisset 
                 
             </p>
@@ -93,10 +95,17 @@
             @isset ($products)
 	             {{$products->links()}}
             @endisset
+
+            @empty ($products)
+	            <div class="mt-5 text-center h4 font-weight-bold " style="animation: bounceIn 3s;">
+	                <span class="bg-success text-white p-4 shadow-lg" style="border-radius: 15px;">မင်္ဂလာပါရှင် ... MC Shop မှ ကြိုဆိုပါတယ်</span>
+	            </div>
+            @endempty
+
             </div>
 
-            <div class="col-3">
-				<ul class="list-group list-group-flush shadow-sm mb-3 ">
+            <div class="col-3" >
+				<ul class="list-group list-group-flush shadow-sm mb-3 " >
 				  <li class="list-group-item font-weight-bold text-primary">
 				  	<div class="spinner-grow spinner-grow-sm text-primary" role="status">
 					  <span class="sr-only">Loading...</span>
@@ -134,6 +143,12 @@
 					    </button>
 					  </div>
 		        </form>
+		        <div class="mt-3 p-3 font-weight-bold shadow-sm" style="border-radius: 10px;">
+	            	<a href="/histories/edited" class="text-decoration-none text-success">
+	            		<i class="fas fa-arrow-circle-right" ></i> &nbsp; ပြန်ပြင်ထားသော အရောင်းစာရင်း
+	            	</a>
+            	</div>
+
 
 			</div>
     </div>
