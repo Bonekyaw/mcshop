@@ -43,11 +43,11 @@ class BackupDatabaseCommand extends Command
     public function handle()
     {
         // File::put('dump.sql','');
-        MySql::create()->setDbName(env('DB_DATABASE'))
-                        ->setUserName(env('DB_USERNAME'))
-                        ->setPassword(env('DB_PASSWORD'))
-                        ->setHost(env('DB_HOST'))
-                        ->setPort(env('DB_PORT'))
+        MySql::create()->setDbName(config('database.connections.mysql.database'))
+                        ->setUserName(config('database.connections.mysql.username'))
+                        ->setPassword(config('database.connections.mysql.password'))
+                        ->setHost(config('database.connections.mysql.host'))
+                        ->setPort(config('database.connections.mysql.port'))
                         ->dumpToFile('F:\dump.sql');
     }
 }

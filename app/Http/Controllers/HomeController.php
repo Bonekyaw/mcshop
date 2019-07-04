@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Events\HistoryEvent;
+use Illuminate\Support\Facades\Redis;
 
 class HomeController extends Controller
 {

@@ -68,13 +68,19 @@
             	<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 				  <div class="carousel-inner">
 				    <div class="carousel-item active">
-				      <img src="{{ asset('storage/uploads/tag.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;">
+				      <img src="{{ asset('storage/uploads/a.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;height: 390px;">
 				    </div>
 				    <div class="carousel-item">
-				      <img src="{{ asset('storage/uploads/cat.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;">
+				      <img src="{{ asset('storage/uploads/b.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;height: 390px;">
 				    </div>
 				    <div class="carousel-item">
-				      <img src="{{ asset('storage/uploads/tag.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;">
+				      <img src="{{ asset('storage/uploads/c.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;height: 390px;">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{{ asset('storage/uploads/d.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;height: 390px;">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="{{ asset('storage/uploads/e.jpg') }}" class="d-block w-100" alt="..." style="border-radius: 30px;height: 390px;">
 				    </div>
 				  </div>
 				  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

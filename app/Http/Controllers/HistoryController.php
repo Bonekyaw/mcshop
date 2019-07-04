@@ -24,7 +24,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $historyPagi = History::with('product:id,product')->orderBy('created_at','desc')->limit(60)->paginate(15);
+        $historyPagi = History::with(['product:id,product','user:id,name'])->orderBy('created_at','desc')->limit(60)->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();
@@ -114,7 +114,7 @@ class HistoryController extends Controller
     }
     public function displayEdited()
     {
-        $historyPagi = History::with('product:id,product')->whereColumn('updated_at','>','created_at')->orderBy('updated_at','desc')->paginate(15);
+        $historyPagi = History::with(['product:id,product','user:id,name'])->whereColumn('updated_at','>','created_at')->orderBy('updated_at','desc')->paginate(15);
         $brandCount = Brand::count();
         $catCount = Category::count();
         $productCount = Product::count();

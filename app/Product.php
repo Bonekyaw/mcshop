@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 class Product extends Model
 {
+    use Cachable;
+
     protected $guarded = [];
+    
     public function category ()
     {
     	return $this->belongsTo(\App\Category::class);
