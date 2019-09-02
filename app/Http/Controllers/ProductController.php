@@ -66,7 +66,9 @@ class ProductController extends Controller
         $id = $request->id;
         $product = Product::create($this->setValidate($id));
         $product->tags()->syncWithoutDetaching($request->tag_id);
-        $this->storeToUploads($product);
+        if (request()->has('photo')) {
+            $this->storeToUploads($product);
+        }
         return redirect('products')->with('success','Wow, သင် Product အသစ်တစ်ခု ထပ်ထည့်တာ အောင်မြင်ပါသည်');
     }
 
@@ -122,7 +124,9 @@ class ProductController extends Controller
         }
         $product->update($this->setValidate($id));
         $product->tags()->syncWithoutDetaching($request->tag_id);
-        $this->storeToUploads($product);
+        if (request()->has('photo')) {
+            $this->storeToUploads($product);
+        }
         return redirect('products')->with('success','Wow, သင် Product အမည်အသစ် ပြောင်းလဲတာ အောင်မြင်ပါသည်');
     }
 
@@ -151,7 +155,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'price' => 'required',
             'cost' => 'required',
-            'discount' => 'sometimes', 
+            'discount' => 'sometimes',
             'description' => 'sometimes',
             'benefit' => 'sometimes',
             'weight' => 'sometimes',
@@ -161,13 +165,12 @@ class ProductController extends Controller
     }
     public function storeToUploads($product)
     {
-        if (request()->has('photo')) {
             $product->update([
                 'photo' => request()->photo->store('uploads','public')
             ]);
             $photo = Image::make(public_path('storage/'.$product->photo))->fit(180,120);
             $photo->save();
-        }
+
     }
 
     public function sold ()
@@ -184,6 +187,6 @@ class ProductController extends Controller
         } else {
             return back()->with('fail','သင် စာရင်းသွင်းတာ တခုခု မှားယွင်းနေပါသည်... ပစ္စည်းလက်ကျန်ကို စစ်ဆေးပါ');
         }
-        
+
     }
 }
