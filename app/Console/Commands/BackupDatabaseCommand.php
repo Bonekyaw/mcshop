@@ -48,6 +48,6 @@ class BackupDatabaseCommand extends Command
                         ->setPassword(config('database.connections.mysql.password'))
                         ->setHost(config('database.connections.mysql.host'))
                         ->setPort(config('database.connections.mysql.port'))
-                        ->dumpToFile('F:\dump.sql');
+                        ->dumpToFile('D:\dump.sql');
     }
 }

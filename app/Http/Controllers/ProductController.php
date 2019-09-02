@@ -158,7 +158,6 @@ class ProductController extends Controller
             'photo' => 'sometimes|file|image|max:5000',
             'inStock' => 'required',
         ]);
-
     }
     public function storeToUploads($product)
     {

@@ -16,6 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        // $this->middleware(['auth','verified']);
         $this->middleware('auth');
     }
 
@@ -51,7 +52,7 @@ class HomeController extends Controller
         $today = ($histories->count()/100)*100;
         $yesterday = (\App\History::wheredate('created_at', '=', Carbon::yesterday())->count()/100)*100;
         return view('home', compact('products','tagProducts','bellNoti','histories','today','yesterday','total'));
-        
+
      }
 
 }
